@@ -28,11 +28,11 @@ public class JsonUtil {
 		return JSONObject.fromObject(o, jsonConfig).toString();
 	}
 	
-	public static String jsonArray2Sting(Collection<?> o){
+	public static String jsonArray2Sting(String callBack,Collection<?> o){
 		JsonConfig jsonConfig = new JsonConfig();  
 		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor()); 
 		//Array 转JSON  
-		return "callback("+JSONArray.fromObject(o, jsonConfig).toString()+")";
+		return callBack+"("+JSONArray.fromObject(o, jsonConfig).toString()+")";
 	}
 	
 	public static String jsonMap2Sting(List<HashMap<String, Object>> list){
