@@ -18,7 +18,7 @@
 				var dataSource = new kendo.data.DataSource({
 					transport : {
 						read : {
-							url : "http://127.0.0.1:8080/EnergyAnalysisSystem/api/meter/query",
+							url : _ctx + "/api/meter/query",
 							dataType : "jsonp"
 						}
 					},

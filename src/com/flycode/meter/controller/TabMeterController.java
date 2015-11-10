@@ -18,15 +18,15 @@ import com.flycode.util.JsonUtil;
  */
 @Controller
 @RequestMapping(value = "/api")
-public class TabMeterController extends BaseController{
+public class TabMeterController extends BaseController {
 	@Autowired
-	private  TabMeterService tabMeterService;
-	
+	private TabMeterService tabMeterService;
+
 	@ResponseBody
-	@RequestMapping(value = "/meter/query")
-	public String queryMeters(){
+	@RequestMapping(value = "/meter/query", produces = "application/x-javascript;charset=UTF-8")
+	public String queryMeters() {
 		String meters = JsonUtil.jsonArray2Sting(tabMeterService.selectByExample(null));
 		return meters;
 	}
-	
+
 }
