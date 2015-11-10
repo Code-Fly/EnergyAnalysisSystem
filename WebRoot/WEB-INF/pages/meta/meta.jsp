@@ -12,11 +12,11 @@
 <!-- external js -->
 
 <!-- common js -->
-<script src="${ctx}/static/js/jquery.min.js"></script>
-<script src="${ctx}/static/js/kendo.all.min.js"></script>
-<script src="${ctx}/static/js/jszip.min.js"></script>
-<script src="${ctx}/static/js/messages/kendo.messages.zh-CN.min.js"></script>
-<script src="${ctx}/static/js/cultures/kendo.culture.zh-CN.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/kendo.all.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/jszip.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/messages/kendo.messages.zh-CN.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/cultures/kendo.culture.zh-CN.min.js"></script>
 <!-- common css -->
 <link href="${ctx}/static/styles/kendo.common.min.css" rel="stylesheet">
 <link href="${ctx}/static/styles/kendo.rtl.min.css" rel="stylesheet">
