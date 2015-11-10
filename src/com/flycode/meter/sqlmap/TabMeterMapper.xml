@@ -127,7 +127,7 @@
       This element was generated on Tue Nov 10 17:27:02 CST 2015.
     -->
     mID, adr, nm, cd, meterType, mem, perNumber, curNumber, dosage, tFlow, readTime, 
-    `mode`, `state`, sID, infoID, ch, P, T, range_Hi, range_Low, dayDosage_hi, dayDosage_low, 
+    mode, state, sID, infoID, ch, P, T, range_Hi, range_Low, dayDosage_hi, dayDosage_low, 
     monDosage_hi, monDosage_low, stopFlag, stopTime, stopValue, suspendTime, unusual, 
     alarm1, alarm2, alarm3, alarm4, alarm5, minDayNum, nowDay, startDayTime, minMonNum, 
     nowMonth, checkStopTime, dayNum, monthNum, meterRange_Hi, meterRange_Low
