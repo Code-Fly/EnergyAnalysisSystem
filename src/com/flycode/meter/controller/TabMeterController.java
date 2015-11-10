@@ -17,7 +17,7 @@ import com.flycode.util.JsonUtil;
  *
  */
 @Controller
-@RequestMapping(value = "/Api")
+@RequestMapping(value = "/api")
 public class TabMeterController extends BaseController{
 	@Autowired
 	private  TabMeterService tabMeterService;
