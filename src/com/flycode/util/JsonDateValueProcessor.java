@@ -43,7 +43,7 @@ public class JsonDateValueProcessor implements JsonValueProcessor {
             return sdf.format(value);
         }  else if (value instanceof Integer) {
         	return value.toString();
-		}
+		} 
         return value == null ? "" : value.toString();  
     }
 

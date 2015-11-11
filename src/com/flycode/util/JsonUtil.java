@@ -31,6 +31,7 @@ public class JsonUtil {
 	public static String jsonArray2Sting(String callBack,Collection<?> o){
 		JsonConfig jsonConfig = new JsonConfig();  
 		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor()); 
+		jsonConfig.registerJsonValueProcessor(Integer.class, new JsonDateValueProcessor());
 		//Array 转JSON  
 		return callBack+"("+JSONArray.fromObject(o, jsonConfig).toString()+")";
 	}
