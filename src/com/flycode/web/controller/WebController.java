@@ -23,11 +23,14 @@ import com.flycode.common.BaseController;
 public class WebController extends BaseController {
 	
 	@RequestMapping(value = "/meter")
-	public String home(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String meter(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/meter";
 	}
 
-	
+	@RequestMapping(value = "/readrec")
+	public String readrec(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/readrec";
+	}
 
 	@RequestMapping(value = { "/", "/index" })
 	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
