@@ -18,7 +18,27 @@ $(document).ready(function() {
 			pageSizes : true,
 			buttonCount : 5
 		},
-		selectable : "cell",
+		selectable : "row",
+		change : function(e) {
+			var selectedRows = this.select();
+			var selectedDataItems = [];
+			for (var i = 0; i < selectedRows.length; i++) {
+				var dataItem = this.dataItem(selectedRows[i]);
+				selectedDataItems.push(dataItem);
+			}
+			// selectedDataItems contains all selected data items
+			alert(JSON.stringify(selectedDataItems));
+			refreshGrid();
+		},
+		dataBound : function(e) {
+			var grid = $("#grid").data("kendoGrid");
+			var data = grid.dataSource.data();
+			$.each(data, function(i, row) {
+				if (row.ch == 2) {
+					$('tr[data-uid="' + row.uid + '"] ').css("background-color", "#ffb6a6").css("color", "#fff");
+				}
+			});
+		},
 		columns : [ {
 			locked : true,
 			field : "adr",
@@ -26,9 +46,8 @@ $(document).ready(function() {
 			width : 200
 		}, {
 			template : function(dataItem) {
-
-				if (2 == dataItem.ch) {
-					return "<div style='color:red;font-weight:bolder;'>" + kendo.htmlEncode(dataItem.ch) + "</div>";
+				if (3 == dataItem.ch) {
+					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.ch) + "</div>";
 				} else {
 					return dataItem.ch;
 				}
@@ -75,13 +94,13 @@ $(document).ready(function() {
 		} ],
 
 	});
-	
+
 	$("#export").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
 	});
-	var grid = $("#grid").data("kendoGrid");
-	grid.bind("change", grid_change);
+	// var grid = $("#grid").data("kendoGrid");
+	// grid.bind("change", grid_change);
 
 	function grid_change(e) {
 		var selectedCells = this.select();
@@ -98,11 +117,12 @@ $(document).ready(function() {
 			return $(item).text();
 		});
 		refreshGrid();
-		alert("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
+		// alert("Selected: " + selected.length + " item(s), [" +
+		// selected.join(", ") + "]");
 		alert(JSON.stringify(selectedDataItems));
 	}
 
 	function refreshGrid() {
-		dataSource.read();
+		// dataSource.read();
 	}
 });
