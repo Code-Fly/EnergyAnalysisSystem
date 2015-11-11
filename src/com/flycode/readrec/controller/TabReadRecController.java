@@ -35,7 +35,8 @@ public class TabReadRecController extends BaseController {
 		@RequestMapping(value = "/readrec/query", produces = "application/x-javascript;charset=UTF-8")
 		public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "beginDate", required = true) String beginDate,
-				@RequestParam(value = "endDate", required = true) String endDate) {
+				@RequestParam(value = "endDate", required = true) String endDate,
+				@RequestParam(value = "mID", required = true) int mID) {
 			
 			/* 
 			 *  get tableName 2015-11-10 13:59:02
@@ -49,7 +50,7 @@ public class TabReadRecController extends BaseController {
 			 */
 			logger.info("tableName="+"tab_ReadRec"+year+month);
 			TabReadRecExample example = new TabReadRecExample();
-			example.or().andComTimeBetween("'"+beginDate+"'", "'"+endDate+"'");
+			example.or().andComTimeBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID);
 			example.setTableName("tab_ReadRec"+year+month);
 			example.setOrderByClause("comTime");
 			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabReadRecService.selectByExample(example));

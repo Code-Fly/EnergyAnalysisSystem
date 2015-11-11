@@ -18,18 +18,23 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		<!-- targetProject:自动生成代码的位置 -->
-		<javaModelGenerator targetPackage="com.flycode.meter.entity" targetProject="EnergyAnalysisSystem">
+		<javaModelGenerator targetPackage="com.flycode.dayaccount.entity" targetProject="EnergyAnalysisSystem">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.flycode.meter.sqlmap" targetProject="EnergyAnalysisSystem">
+		<sqlMapGenerator targetPackage="com.flycode.dayaccount.sqlmap" targetProject="EnergyAnalysisSystem">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.flycode.meter.mapper" targetProject="EnergyAnalysisSystem">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.flycode.dayaccount.mapper" targetProject="EnergyAnalysisSystem">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
-		<table tableName="tab_meter" domainObjectName="TabMeter" >
+		<table tableName="tab_dayAccount2015" domainObjectName="TabDayAccount"  
+		    enableCountByExample="false"
+			enableUpdateByExample="false"
+			enableDeleteByExample="false"
+			enableSelectByExample="true"
+			selectByExampleQueryId="false" >
 		 <property name="useActualColumnNames" value="true"/>
 		</table>
 
