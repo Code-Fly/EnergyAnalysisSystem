@@ -40,7 +40,7 @@ $(document).ready(function() {
 			axis : "t"
 		}, {
 			field : "curNumber",
-			name : "累计 [kwh]",
+			name : "累计流量 [kwh]",
 			style : "smooth",
 			type : "line",
 			markers : {
