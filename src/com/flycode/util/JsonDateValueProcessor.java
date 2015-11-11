@@ -41,7 +41,9 @@ public class JsonDateValueProcessor implements JsonValueProcessor {
         if(value instanceof Date){  
             SimpleDateFormat sdf = new SimpleDateFormat(format,Locale.CHINA);  
             return sdf.format(value);
-        }  
+        }  else if (value instanceof Integer) {
+        	return value.toString();
+		}
         return value == null ? "" : value.toString();  
     }
 

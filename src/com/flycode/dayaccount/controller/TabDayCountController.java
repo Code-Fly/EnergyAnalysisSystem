@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flycode.common.BaseController;
 import com.flycode.dayaccount.entity.TabDayAccountExample;
 import com.flycode.dayaccount.service.iface.TabDayAccountService;
-import com.flycode.readrec.entity.TabReadRecExample;
-import com.flycode.readrec.service.iface.TabReadRecService;
 import com.flycode.util.JsonUtil;
 
 /**
@@ -30,14 +28,17 @@ public class TabDayCountController extends BaseController {
 		/**
 		 * 日用量分析
 		 * @param callBack
-		 * @param yearmonth
+		 * @param beginDate 查询开始时间
+		 * @param endDate 结束时间
+		 * @param mID 用户id
 		 * @return
 		 */
 		@ResponseBody
 		@RequestMapping(value = "/dayaccount/query", produces = "application/x-javascript;charset=UTF-8")
 		public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "beginDate", required = true) String beginDate,
-				@RequestParam(value = "endDate", required = true) String endDate) {
+				@RequestParam(value = "endDate", required = true) String endDate,
+				@RequestParam(value = "mID", required = true) int mID) {
 			
 			/* 
 			 *  get tableName 2015-11-10 
@@ -50,7 +51,7 @@ public class TabDayCountController extends BaseController {
 			 */
 			logger.info("tableName="+"tab_dayAccount"+year);
 			TabDayAccountExample example = new TabDayAccountExample();
-			example.or().andCollectDayBetween("'"+beginDate+"'", "'"+endDate+"'");
+			example.or().andCollectDayBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID);
 			example.setTableName("tab_dayAccount"+year);
 			example.setOrderByClause("collectDay");
 			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabDayAccountService.selectByExample(example));

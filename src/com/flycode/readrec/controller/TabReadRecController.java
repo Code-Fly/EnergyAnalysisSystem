@@ -25,10 +25,13 @@ public class TabReadRecController extends BaseController {
 		@Autowired
 		private TabReadRecService tabReadRecService;
 
+		
 		/**
-		 * 获取 趋势分析
+		 *  获取 趋势分析
 		 * @param callBack
-		 * @param yearmonth
+		 * @param beginDate 查询开始时间
+		 * @param endDate 结束时间
+		 * @param mID 用户id
 		 * @return
 		 */
 		@ResponseBody
