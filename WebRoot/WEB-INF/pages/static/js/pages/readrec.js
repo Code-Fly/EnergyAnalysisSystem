@@ -1,4 +1,23 @@
 $(document).ready(function() {
+	$(".export-img").click(function() {
+		var chart = $("#chart").getKendoChart();
+		chart.exportImage().done(function(data) {
+			kendo.saveAs({
+				dataURI : data,
+				fileName : "chart.png",
+			});
+		});
+	});
+
+	$(".export-svg").click(function() {
+		var chart = $("#chart").getKendoChart();
+		chart.exportSVG().done(function(data) {
+			kendo.saveAs({
+				dataURI : data,
+				fileName : "chart.svg",
+			});
+		});
+	});
 	$("#chart").kendoChart({
 		dataSource : {
 			transport : {

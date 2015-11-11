@@ -1,13 +1,14 @@
 $(document).ready(function() {
 	initGrid();
 
-	$("#export").click(function(e) {
-		var grid = $("#grid").data("kendoGrid");
-		grid.saveAsExcel();
-	});
-
 	function initGrid() {
 		$("#grid").kendoGrid({
+			toolbar : [ "excel" ],
+			excel : {
+				fileName : "Export.xlsx",
+				filterable : true,
+				allPages: true
+			},
 			dataSource : {
 				transport : {
 					read : {

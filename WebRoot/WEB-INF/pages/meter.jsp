@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div id="example">
-		<button id="export">Export to Excel</button>
 		<div id="grid"></div>
 	</div>
 </body>
