@@ -9,10 +9,10 @@
 </head>
 <body>
 	<div id="example">
-		<div class="demo-section k-content wide">
-		
-			<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
-		</div>
+
+
+		<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
+
 	</div>
 </body>
 </html>
