@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flycode.common.BaseController;
+import com.flycode.readrec.entity.TabReadRecExample;
 import com.flycode.readrec.service.iface.TabReadRecService;
 import com.flycode.util.JsonUtil;
 
@@ -33,11 +34,25 @@ public class TabReadRecController extends BaseController {
 		@ResponseBody
 		@RequestMapping(value = "/readrec/query", produces = "application/x-javascript;charset=UTF-8")
 		public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
-				@RequestParam(value = "yearmonth", required = true) String yearmonth) {
+				@RequestParam(value = "beginDate", required = true) String beginDate,
+				@RequestParam(value = "endDate", required = true) String endDate) {
+			
+			/* 
+			 *  get tableName 2015-11-10 13:59:02
+				str= [2015,11,10 13:59:02]
+			 */		
+			String[] str = beginDate.split("-");
+			String year = str[0].substring(2);
+			String month= str[1];
 			/**
 			 * 传入动态的表名如tab_readRec1511
 			 */
-			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabReadRecService.selectByMonth("tab_readRec"+yearmonth));
+			logger.info("tableName="+"tab_ReadRec"+year+month);
+			TabReadRecExample example = new TabReadRecExample();
+			example.or().andComTimeBetween("'"+beginDate+"'", "'"+endDate+"'");
+			example.setTableName("tab_ReadRec"+year+month);
+			example.setOrderByClause("comTime");
+			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabReadRecService.selectByExample(example));
 			return readRecs;
 		}
 
