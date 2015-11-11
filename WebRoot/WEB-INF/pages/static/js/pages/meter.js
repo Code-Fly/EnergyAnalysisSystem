@@ -34,8 +34,8 @@ $(document).ready(function() {
 			var grid = $("#grid").data("kendoGrid");
 			var data = grid.dataSource.data();
 			$.each(data, function(i, row) {
-				if (row.ch == 2) {
-					$('tr[data-uid="' + row.uid + '"] ').css("background-color", "#ffb6a6").css("color", "#fff");
+				if (row.stopFlag == 1) {
+					$('tr[data-uid="' + row.uid + '"] ').css("color", "red");
 				}
 			});
 		},
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			width : 200
 		}, {
 			template : function(dataItem) {
-				if (3 == dataItem.ch) {
+				if (null == dataItem.ch) {
 					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.ch) + "</div>";
 				} else {
 					return dataItem.ch;
