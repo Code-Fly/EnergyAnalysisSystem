@@ -30,6 +30,11 @@ public class WebController extends BaseController {
 		return "/readrec";
 	}
 	
+	@RequestMapping(value = "/daily-use")
+	public String dailyUse(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/daily-use";
+	}
+	
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/login";

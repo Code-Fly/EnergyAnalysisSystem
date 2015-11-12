@@ -33,7 +33,7 @@
 				</li>
 				<li><a href="meter"><i class="fa fa-table fa-fw"></i> 主状态表</a></li>
 				<li><a href="readrec"><i class="fa fa-bar-chart-o fa-fw"></i> 趋势分析</a></li>
-				<li><a href="#"><i class="fa fa-calendar-minus-o fa-fw"></i> 日用量分析</a></li>
+				<li><a href="daily-use"><i class="fa fa-calendar-minus-o fa-fw"></i> 日用量分析</a></li>
 				<li><a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i> 月用量分析</a></li>
 				<li><a href="#"><i class="fa fa-calendar-times-o fa-fw"></i> 年用量分析</a></li>
 				<li><a href="#"><i class="fa fa-flash fa-fw"></i> 供电故障</a></li>
