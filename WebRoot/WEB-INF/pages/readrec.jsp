@@ -17,6 +17,17 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">趋势分析</h1>
 						<div class="row show-grid">
+							<div class="col-md-4">
+								<input id="user-1" style="width: 100%;" />
+							</div>
+							<div class="col-md-4">
+								<input id="user-2" style="width: 100%;" />
+							</div>
+							<div class="col-md-4">
+								<input id="user-3" style="width: 100%;" />
+							</div>
+						</div>
+						<div class="row show-grid">
 							<div class="col-md-5">
 								<input id="start" style="width: 100%;" />
 							</div>

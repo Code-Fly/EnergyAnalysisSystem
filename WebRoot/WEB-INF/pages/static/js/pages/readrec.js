@@ -39,7 +39,6 @@ $(document).ready(function() {
 		reloadGrid();
 	})
 
-
 	$("#submit-dp").click(function() {
 		reloadChart();
 		reloadGrid();
@@ -63,11 +62,67 @@ $(document).ready(function() {
 
 	initDateTimePicker();
 
+	$("#user-1").kendoComboBox({
+		placeholder : "请选择",
+		dataTextField : "nm",
+		dataValueField : "infoID",
+		dataSource : {
+			transport : {
+				read : {
+					url : _ctx + "/api/tree/query",
+					dataType : "jsonp"
+				}
+			}
+		},
+		change : function(e) {
+			var user1 = $("#user-1").data("kendoComboBox");
+			var user2 = $("#user-2").data("kendoComboBox");
+			user2.setDataSource({
+				transport : {
+					read : {
+						url : _ctx + "/api/tree/query?infoID=" + user1.value(),
+						dataType : "jsonp"
+					}
+				}
+			});
+			user2.text(null);
+			user2.value(null);
+		}
+	});
+
+	$("#user-2").kendoComboBox({
+		placeholder : "请选择",
+		dataTextField : "nm",
+		dataValueField : "infoID",
+		dataSource : null,
+		change : function(e) {
+			var user2 = $("#user-2").data("kendoComboBox");
+			var user3 = $("#user-3").data("kendoComboBox");
+			user3.setDataSource({
+				transport : {
+					read : {
+						url : _ctx + "/api/tree/query?infoID=" + user2.value(),
+						dataType : "jsonp"
+					}
+				}
+			});
+			user3.text(null);
+			user3.value(null);
+		}
+	});
+
+	$("#user-3").kendoComboBox({
+		placeholder : "请选择",
+		dataTextField : "nm",
+		dataValueField : "infoID",
+		dataSource : null
+	});
+
 	$("#chart").kendoChart({
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+					url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 					dataType : "jsonp"
 				}
 			}
@@ -136,7 +191,7 @@ $(document).ready(function() {
 			background : "transparent"
 		},
 		dataBound : function(e) {
-
+			//alert($("#user-3").data("kendoComboBox").value())
 		}
 	});
 
@@ -149,7 +204,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+					url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 					dataType : "jsonp"
 				}
 			},
@@ -269,7 +324,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 						dataType : "jsonp"
 					}
 				}
@@ -286,7 +341,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 						dataType : "jsonp"
 					}
 				},
