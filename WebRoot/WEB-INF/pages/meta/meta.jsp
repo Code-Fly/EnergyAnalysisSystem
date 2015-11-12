@@ -21,15 +21,23 @@
 <script type="text/javascript" src="${ctx}/static/styles/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- common css -->
-<link href="${ctx}/static/styles/theme/kendo.common.min.css" rel="stylesheet">
 <link href="${ctx}/static/styles/theme/kendo.rtl.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/theme/kendo.default.min.css" rel="stylesheet">
 <link href="${ctx}/static/styles/theme/kendo.dataviz.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/theme/kendo.dataviz.default.min.css" rel="stylesheet">
 <link href="${ctx}/static/styles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${ctx}/static/styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="${ctx}/static/styles/sb-admin/sb-admin-2.css" rel="stylesheet">
 
+<!-- theme -->
+<!-- Bootstrap  -->
+<link href="${ctx}/static/styles/theme/kendo.common-bootstrap.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.bootstrap.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.dataviz.bootstrap.min.css" rel="stylesheet">
+<!-- Default -->
+<%-- 
+<link href="${ctx}/static/styles/theme/kendo.common.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.default.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.dataviz.default.min.css" rel="stylesheet">
+ --%>
 
 
 
