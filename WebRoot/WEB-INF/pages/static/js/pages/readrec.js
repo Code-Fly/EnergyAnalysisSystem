@@ -17,12 +17,55 @@ $(document).ready(function() {
 				fileName : "chart.svg",
 			});
 		});
+	});	
+
+	$("#reset-dp").click(function() {
+		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
+		end.value(today);
+		start.max(end.value());
+		start.value(today);
 	});
+
+	$("#submit-dp").click(function() {
+		var chart = $("#chart").data("kendoChart");
+		chart.setOptions({
+			dataSource : {
+				transport : {
+					read : {
+						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						dataType : "jsonp"
+					}
+				}
+			},
+			title : {
+				text : $("#start").val() + " ~ " + $("#end").val()
+			},
+		});
+	});
+	
+	var today = new Date();
+
+	var start = $("#start").kendoDateTimePicker({
+		value : today,
+		change : startChange,
+		format : "yyyy-MM-dd HH:mm:ss",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	var end = $("#end").kendoDateTimePicker({
+		value : today,
+		change : endChange,
+		format : "yyyy-MM-dd HH:mm:ss",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	initDateTimePicker();
+
 	$("#chart").kendoChart({
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/readrec/query?mID=37&beginDate=2015-01-18 13:00:01&endDate=2015-01-19 10:20:01",
+					url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 					dataType : "jsonp"
 				}
 			}
@@ -72,7 +115,7 @@ $(document).ready(function() {
 			position : "bottom"
 		},
 		title : {
-			text : "2015-01-18 13:00:01 ~ 2015-01-19 10:20:01"
+			text : $("#start").val() + " ~ " + $("#end").val()
 		},
 		categoryAxis : {
 			majorGridLines : {
@@ -89,6 +132,9 @@ $(document).ready(function() {
 		},
 		chartArea : {
 			background : "transparent"
+		},
+		dataBound : function(e) {
+			
 		}
 	});
 
@@ -124,32 +170,7 @@ $(document).ready(function() {
 			start.max(endDate);
 			end.min(endDate);
 		}
-	}
-
-	var today = new Date();
-
-	var start = $("#start").kendoDateTimePicker({
-		value : today,
-		change : startChange,
-		format : "yyyy-MM-dd hh:mm tt",
-		culture : "zh-CN"
-	}).data("kendoDateTimePicker");
-
-	var end = $("#end").kendoDateTimePicker({
-		value : today,
-		change : endChange,
-		format : "yyyy-MM-dd hh:mm tt",
-		culture : "zh-CN"
-	}).data("kendoDateTimePicker");
-
-	initDateTimePicker();
-
-	$("#reset-dp").click(function() {
-		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
-		end.value(today);
-		start.max(end.value());
-		start.value(today);
-	});
+	}	
 
 	function initDateTimePicker() {
 		start.max(end.value());
@@ -157,7 +178,5 @@ $(document).ready(function() {
 		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
 		end.max(endDateMax);
 	}
-
-	
 
 });
