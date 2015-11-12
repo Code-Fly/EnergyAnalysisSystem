@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$(".export-img").click(function() {
+	$("#export-img").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportImage().done(function(data) {
 			kendo.saveAs({
@@ -9,7 +9,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".export-svg").click(function() {
+	$("#export-svg").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportSVG().done(function(data) {
 			kendo.saveAs({
@@ -17,7 +17,12 @@ $(document).ready(function() {
 				fileName : "chart.svg",
 			});
 		});
-	});	
+	});
+
+	$("#export-excel").click(function(e) {
+		var grid = $("#grid").data("kendoGrid");
+		grid.saveAsExcel();
+	});
 
 	$("#reset-dp").click(function() {
 		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
@@ -26,23 +31,20 @@ $(document).ready(function() {
 		start.value(today);
 	});
 
+	$("#tab-chart").on('shown.bs.tab', function(e) {
+		reloadChart();
+	})
+
+	$("#tab-data").on('shown.bs.tab', function(e) {
+		reloadGrid();
+	})
+
+
 	$("#submit-dp").click(function() {
-		var chart = $("#chart").data("kendoChart");
-		chart.setOptions({
-			dataSource : {
-				transport : {
-					read : {
-						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-						dataType : "jsonp"
-					}
-				}
-			},
-			title : {
-				text : $("#start").val() + " ~ " + $("#end").val()
-			},
-		});
+		reloadChart();
+		reloadGrid();
 	});
-	
+
 	var today = new Date();
 
 	var start = $("#start").kendoDateTimePicker({
@@ -134,8 +136,90 @@ $(document).ready(function() {
 			background : "transparent"
 		},
 		dataBound : function(e) {
-			
+
 		}
+	});
+
+	$("#grid").kendoGrid({
+		excel : {
+			fileName : "Export.xlsx",
+			filterable : true,
+			allPages : true
+		},
+		dataSource : {
+			transport : {
+				read : {
+					url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+					dataType : "jsonp"
+				}
+			},
+			pageSize : 10,
+		},
+		sortable : true,
+		filterable : true,
+		pageable : {
+			refresh : true,
+			pageSizes : true,
+			buttonCount : 5
+		},
+		selectable : "row",
+		change : function(e) {
+			var selectedRows = this.select();
+			var selectedDataItems = [];
+			for (var i = 0; i < selectedRows.length; i++) {
+				var dataItem = this.dataItem(selectedRows[i]);
+				selectedDataItems.push(dataItem);
+			}
+			// selectedDataItems contains all selected data items
+			// alert(JSON.stringify(selectedDataItems));
+			this.dataSource.read();
+		},
+		dataBound : function(e) {
+			var data = this.dataSource.data();
+			$.each(data, function(i, row) {
+				if (row.stopFlag == 1) {
+					$('tr[data-uid="' + row.uid + '"] ').css("color", "red");
+				}
+			});
+		},
+		columns : [ {
+			locked : true,
+			field : "nm",
+			title : "表具名称",
+			width : 200
+		}, {
+			field : "curNumber",
+			title : "当前数值",
+			width : 200
+		}, {
+			field : "tFlow",
+			title : "瞬时流量",
+			width : 200
+		}, {
+			template : function(dataItem) {
+				if (null == dataItem.p) {
+					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.p) + "</div>";
+				} else {
+					return dataItem.p;
+				}
+			},
+			field : "p",
+			title : "压力",
+			width : 200
+		}, {
+			field : "t",
+			title : "温度",
+			width : 200
+		}, {
+			field : "readTime",
+			title : "读数时间",
+			width : 200
+		}, {
+			field : "comTime",
+			title : "结束时间",
+			width : 200
+		} ],
+
 	});
 
 	function startChange() {
@@ -170,7 +254,7 @@ $(document).ready(function() {
 			start.max(endDate);
 			end.min(endDate);
 		}
-	}	
+	}
 
 	function initDateTimePicker() {
 		start.max(end.value());
@@ -179,4 +263,35 @@ $(document).ready(function() {
 		end.max(endDateMax);
 	}
 
+	function reloadChart() {
+		var chart = $("#chart").data("kendoChart");
+		chart.setOptions({
+			dataSource : {
+				transport : {
+					read : {
+						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						dataType : "jsonp"
+					}
+				}
+			},
+			title : {
+				text : $("#start").val() + " ~ " + $("#end").val()
+			},
+		});
+	}
+
+	function reloadGrid() {
+		var grid = $("#grid").data("kendoGrid");
+		grid.setOptions({
+			dataSource : {
+				transport : {
+					read : {
+						url : _ctx + "/api/readrec/query?mID=37&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						dataType : "jsonp"
+					}
+				},
+				pageSize : 20,
+			}
+		});
+	}
 });
