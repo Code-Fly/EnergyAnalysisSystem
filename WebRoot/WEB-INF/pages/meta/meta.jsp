@@ -18,12 +18,18 @@
 <script type="text/javascript" src="${ctx}/static/js/pako_deflate.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/messages/kendo.messages.zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/cultures/kendo.culture.zh-CN.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/styles/bootstrap/js/bootstrap.min.js"></script>
+
 <!-- common css -->
-<link href="${ctx}/static/styles/kendo.common.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/kendo.rtl.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/kendo.default.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/kendo.dataviz.min.css" rel="stylesheet">
-<link href="${ctx}/static/styles/kendo.dataviz.default.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.common.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.rtl.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.default.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.dataviz.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/theme/kendo.dataviz.default.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="${ctx}/static/styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${ctx}/static/styles/sb-admin/sb-admin-2.css" rel="stylesheet">
+
 
 
 

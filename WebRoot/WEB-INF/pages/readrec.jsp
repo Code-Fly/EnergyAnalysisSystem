@@ -8,8 +8,11 @@
 <script type="text/javascript" src="${ctx}/static/js/pages/readrec.js"></script>
 </head>
 <body>
-	<div id="example">
-		<div class="box wide">
+	<div id="wrapper">
+		<%@ include file="meta/navigator.jsp"%>
+		<!-- /#Navigation -->
+		<div id="page-wrapper" style="padding-top: 2em;padding-bottom: 2em;">
+			<div class="box wide">
 			<h4>Advanced Export options</h4>
 			<div class="box-col">
 				<button class='export-img k-button'>Export as Image</button>
@@ -32,6 +35,10 @@
 			<button id="submit-dp" class='k-button'>Submit</button>
 		</div>
 		<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
+		</div>
+		<!-- /#page-wrapper -->
 	</div>
+	<!-- /#wrapper -->
+
 </body>
 </html>

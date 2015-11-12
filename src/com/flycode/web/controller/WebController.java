@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flycode.common.BaseController;
 
-
-
 /**
  * @author Barrie
  *
@@ -21,7 +19,7 @@ import com.flycode.common.BaseController;
 @Controller
 @RequestMapping(value = "/web")
 public class WebController extends BaseController {
-	
+
 	@RequestMapping(value = "/meter")
 	public String meter(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/meter";
@@ -31,10 +29,14 @@ public class WebController extends BaseController {
 	public String readrec(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/readrec";
 	}
+	
+	@RequestMapping(value = "/login")
+	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/login";
+	}
 
-	@RequestMapping(value = { "/", "/index" })
+	@RequestMapping(value = {"/index" })
 	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-
 		return "/meter";
 	}
 }

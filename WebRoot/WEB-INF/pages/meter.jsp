@@ -8,8 +8,14 @@
 <script type="text/javascript" src="${ctx}/static/js/pages/meter.js"></script>
 </head>
 <body>
-	<div id="example">
-		<div id="grid"></div>
+	<div id="wrapper">
+		<%@ include file="meta/navigator.jsp"%>
+		<!-- /#Navigation -->
+		<div id="page-wrapper" style="padding-top: 2em;padding-bottom: 2em;">
+			<div id="grid"></div>
+		</div>
+		<!-- /#page-wrapper -->
 	</div>
+	<!-- /#wrapper -->
 </body>
 </html>
