@@ -53,7 +53,8 @@ public class TabReadRecController extends BaseController {
 			 */
 			logger.info("tableName="+"tab_ReadRec"+year+month);
 			TabReadRecExample example = new TabReadRecExample();
-			example.or().andReadTimeBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID);
+			// 只查询readFlag=0（无告警）的数据
+			example.or().andReadTimeBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID).andReFlagEqualTo(0);
 			example.setTableName("tab_ReadRec"+year+month);
 			example.setOrderByClause("readTime");
 			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabReadRecService.selectByExample(example));
