@@ -24,10 +24,12 @@
 
 			<h4 style="margin-top: 2em;">End date</h4>
 			<input id="end" style="width: 100%;" />
-			
+
 			<h4 style="margin-top: 2em;">Reset</h4>
 			<button id="reset-dp" class='k-button'>Reset</button>
 
+			<h4 style="margin-top: 2em;">Submit</h4>
+			<button id="submit-dp" class='k-button'>Submit</button>
 		</div>
 		<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
 	</div>
