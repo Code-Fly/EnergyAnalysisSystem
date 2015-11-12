@@ -335,62 +335,62 @@ public class TabAreaExample {
         }
 
         public Criteria andLevelIsNull() {
-            addCriterion("`level` is null");
+            addCriterion("level is null");
             return (Criteria) this;
         }
 
         public Criteria andLevelIsNotNull() {
-            addCriterion("`level` is not null");
+            addCriterion("level is not null");
             return (Criteria) this;
         }
 
         public Criteria andLevelEqualTo(Integer value) {
-            addCriterion("`level` =", value, "level");
+            addCriterion("level =", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotEqualTo(Integer value) {
-            addCriterion("`level` <>", value, "level");
+            addCriterion("level <>", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelGreaterThan(Integer value) {
-            addCriterion("`level` >", value, "level");
+            addCriterion("level >", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelGreaterThanOrEqualTo(Integer value) {
-            addCriterion("`level` >=", value, "level");
+            addCriterion("level >=", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelLessThan(Integer value) {
-            addCriterion("`level` <", value, "level");
+            addCriterion("level <", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelLessThanOrEqualTo(Integer value) {
-            addCriterion("`level` <=", value, "level");
+            addCriterion("level <=", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelIn(List<Integer> values) {
-            addCriterion("`level` in", values, "level");
+            addCriterion("level in", values, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotIn(List<Integer> values) {
-            addCriterion("`level` not in", values, "level");
+            addCriterion("level not in", values, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelBetween(Integer value1, Integer value2) {
-            addCriterion("`level` between", value1, value2, "level");
+            addCriterion("level between", value1, value2, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotBetween(Integer value1, Integer value2) {
-            addCriterion("`level` not between", value1, value2, "level");
+            addCriterion("level not between", value1, value2, "level");
             return (Criteria) this;
         }
 

@@ -33,5 +33,10 @@ public class TabAreaServiceImp implements TabAreaService {
 	public TabArea selectByPrimaryKey(String infoID) {
 		 return areaMapper.selectByPrimaryKey(infoID);
 	}
+
+	@Override
+	public List<TabArea> selectByInfoID(String infoID) {
+		return areaMapper.selectByInfoID(infoID);
+	}
 	
 }
