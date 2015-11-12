@@ -53,9 +53,9 @@ public class TabReadRecController extends BaseController {
 			 */
 			logger.info("tableName="+"tab_ReadRec"+year+month);
 			TabReadRecExample example = new TabReadRecExample();
-			example.or().andComTimeBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID);
+			example.or().andReadTimeBetween("'"+beginDate+"'", "'"+endDate+"'").andMIDEqualTo(mID);
 			example.setTableName("tab_ReadRec"+year+month);
-			example.setOrderByClause("comTime");
+			example.setOrderByClause("readTime");
 			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabReadRecService.selectByExample(example));
 			return readRecs;
 		}
