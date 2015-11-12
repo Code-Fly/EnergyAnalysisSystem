@@ -25,10 +25,19 @@ $(document).ready(function() {
 	});
 
 	$("#reset-dp").click(function() {
+		var user1 = $("#user-1").data("kendoComboBox");
+		var user2 = $("#user-2").data("kendoComboBox");
+		var user3 = $("#user-3").data("kendoComboBox");
 		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
 		end.value(today);
 		start.max(end.value());
 		start.value(today);
+		user1.text(null);
+		user1.value(null);
+		user2.text(null);
+		user2.value(null);
+		user3.text(null);
+		user3.value(null);
 	});
 
 	$("#tab-chart").on('shown.bs.tab', function(e) {
