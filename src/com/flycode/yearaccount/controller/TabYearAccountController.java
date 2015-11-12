@@ -43,7 +43,7 @@ public class TabYearAccountController extends BaseController {
 		 */
 		@ResponseBody
 		@RequestMapping(value = "/yearaccount/query", produces = "application/x-javascript;charset=UTF-8")
-		public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
+		public String queryYearAccounts(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "year", required = true) String year,
 				@RequestParam(value = "infoID", required = true) String infoID) {
 			TabArea area = tabAreaService.selectByPrimaryKey(infoID);

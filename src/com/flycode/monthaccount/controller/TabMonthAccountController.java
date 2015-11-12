@@ -35,7 +35,7 @@ public class TabMonthAccountController extends BaseController {
 		 */
 		@ResponseBody
 		@RequestMapping(value = "/monthaccount/query", produces = "application/x-javascript;charset=UTF-8")
-		public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
+		public String queryMonthaccounts(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "year", required = true) int year,
 				@RequestParam(value = "mID", required = true) int mID) {
 			logger.info("tableName="+"tab_MonthAccount"+year);
