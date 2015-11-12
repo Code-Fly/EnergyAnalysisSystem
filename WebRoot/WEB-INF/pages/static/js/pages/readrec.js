@@ -48,14 +48,14 @@ $(document).ready(function() {
 	var start = $("#start").kendoDateTimePicker({
 		value : today,
 		change : startChange,
-		format : "yyyy-MM-dd hh:mm:ss",
+		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
 
 	var end = $("#end").kendoDateTimePicker({
 		value : today,
 		change : endChange,
-		format : "yyyy-MM-dd hh:mm:ss",
+		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
 
