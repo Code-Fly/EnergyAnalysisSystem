@@ -31,8 +31,6 @@ public class TabYearAccountController extends BaseController {
 		@Autowired
 		private TabAreaService tabAreaService;
 		
-		@Autowired
-		private TabMeterService tabMeterService;
 
 		/**
 		 * 年用量

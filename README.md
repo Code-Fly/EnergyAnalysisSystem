@@ -17,3 +17,4 @@ http://localhost:8080/EnergyAnalysisSystem/api/yearaccount/query?callback=123123
 
 # 供电故障查询  errClass这个参数非必须，其他必须
 http://localhost:8080/EnergyAnalysisSystem//api/meter/query?callback=123123&beginDate=2013-10-09 13:00:01&endDate=2013-10-19 00:00:01&errClass=202
+
