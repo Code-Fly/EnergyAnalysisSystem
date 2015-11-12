@@ -35,13 +35,16 @@
 						</span>
 					</div> <!-- /input-group -->
 				</li>
-				<li><a href="meter"><i class="fa fa-dashboard fa-fw"></i> 主状态表</a></li>
+				<li><a href="meter"><i class="fa fa-table fa-fw"></i> 主状态表</a></li>
 				<li><a href="readrec"><i class="fa fa-bar-chart-o fa-fw"></i> 趋势分析</a></li>
-				<li><a href="#"><i class="fa fa-table fa-fw"></i> Tables</a></li>
-				<li><a href="#"><i class="fa fa-edit fa-fw"></i> Forms</a></li>
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements</a></li>
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown</a></li>
-				<li><a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages</a></li>
+				<li><a href="#"><i class="fa fa-calendar-minus-o fa-fw"></i> 日用量分析</a></li>
+				<li><a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i> 月用量分析</a></li>
+				<li><a href="#"><i class="fa fa-calendar-times-o fa-fw"></i> 年用量分析</a></li>
+				<li><a href="#"><i class="fa fa-flash fa-fw"></i> 供电故障</a></li>
+				<li><a href="#"><i class="fa fa-fire fa-fw"></i> 停气报警</a></li>
+				<li><a href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> 数据异常</a></li>
+				<li><a href="#"><i class="fa fa-files-o fa-fw"></i> 抄表记录</a></li>
+				<li><a href="#"><i class="fa fa-database fa-fw"></i> 系统日志</a></li>
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
