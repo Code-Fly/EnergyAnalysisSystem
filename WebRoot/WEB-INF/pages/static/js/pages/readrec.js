@@ -57,16 +57,6 @@ $(document).ready(function() {
 			},
 			color : "#73c100",
 			axis : "t"
-		}, {
-			field : "curNumber",
-			name : "累计流量 [kwh]",
-			style : "smooth",
-			type : "line",
-			markers : {
-				visible : false
-			},
-			color : "#007eff",
-			axis : "curNumber"
 		} ],
 		valueAxes : [ {
 			name : "tFlow",
@@ -77,9 +67,6 @@ $(document).ready(function() {
 		}, {
 			name : "t",
 			color : "#73c100"
-		}, {
-			name : "curNumber",
-			color : "#007eff"
 		} ],
 		legend : {
 			position : "bottom"
@@ -94,15 +81,83 @@ $(document).ready(function() {
 			majorTicks : {
 				visible : false
 			},
-			axisCrossingValues : [ 999999, 999999, 0, 0 ],
+			axisCrossingValues : [ 999999, 999999, 0 ],
 		},
 		tooltip : {
 			visible : true,
-			template : "<div>#= series.name #: #= value #</div><div> #= dataItem.comTime#</div>"
+			template : "<div>#= series.name #: #= value #</div><div> #= dataItem.readTime#</div>"
 		},
 		chartArea : {
 			background : "transparent"
 		}
 	});
+
+	function startChange() {
+		var startDate = start.value(), endDate = end.value();
+		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+
+		if (startDate) {
+			startDate = new Date(startDate);
+			startDate.setDate(startDate.getDate());
+			end.min(startDate);
+		} else if (endDate) {
+			start.max(new Date(endDate));
+		} else {
+			endDate = new Date();
+			start.max(endDate);
+			end.min(endDate);
+		}
+		end.max(endDateMax);
+	}
+
+	function endChange() {
+		var endDate = end.value(), startDate = start.value();
+
+		if (endDate) {
+			endDate = new Date(endDate);
+			endDate.setDate(endDate.getDate());
+			start.max(endDate);
+		} else if (startDate) {
+			end.min(new Date(startDate));
+		} else {
+			endDate = new Date();
+			start.max(endDate);
+			end.min(endDate);
+		}
+	}
+
+	var today = new Date();
+
+	var start = $("#start").kendoDateTimePicker({
+		value : today,
+		change : startChange,
+		format : "yyyy-MM-dd hh:mm tt",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	var end = $("#end").kendoDateTimePicker({
+		value : today,
+		change : endChange,
+		format : "yyyy-MM-dd hh:mm tt",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	initDateTimePicker();
+
+	$("#reset-dp").click(function() {
+		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
+		end.value(today);
+		start.max(end.value());
+		start.value(today);
+	});
+
+	function initDateTimePicker() {
+		start.max(end.value());
+		end.min(start.value());
+		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+		end.max(endDateMax);
+	}
+
+	
 
 });
