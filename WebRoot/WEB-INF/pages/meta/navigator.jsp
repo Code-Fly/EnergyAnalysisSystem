@@ -26,13 +26,9 @@
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<li class="sidebar-search">
-					<div class="input-group custom-search-form">
-						<input type="text" class="form-control" placeholder="放logo"> <span class="input-group-btn">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
+				<li class="sidebar-search" style="background-image: url(${ctx}/static/images/logo.jpg);background-origin:content;background-position:50% 50%;background-size:contain;background-repeat:no-repeat;height:82px;">
+					<div class="input-group custom-search-form" >
+						&nbsp;
 					</div> <!-- /input-group -->
 				</li>
 				<li><a href="meter"><i class="fa fa-table fa-fw"></i> 主状态表</a></li>
