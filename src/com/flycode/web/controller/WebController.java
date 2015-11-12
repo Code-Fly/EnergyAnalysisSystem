@@ -35,6 +35,16 @@ public class WebController extends BaseController {
 		return "/daily-use";
 	}
 	
+	@RequestMapping(value = "/monthly-use")
+	public String monthlyUse(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/monthly-use";
+	}
+	
+	@RequestMapping(value = "/yearly-use")
+	public String yearlyUse(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/yearly-use";
+	}
+	
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/login";
