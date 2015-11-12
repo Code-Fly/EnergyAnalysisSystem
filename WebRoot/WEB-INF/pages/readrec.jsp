@@ -18,6 +18,17 @@
 				<button class='export-svg k-button'>Export as SVG</button>
 			</div>
 		</div>
+		<div style="width: 20em;">
+			<h4>Start date</h4>
+			<input id="start" style="width: 100%;" />
+
+			<h4 style="margin-top: 2em;">End date</h4>
+			<input id="end" style="width: 100%;" />
+			
+			<h4 style="margin-top: 2em;">Reset</h4>
+			<button id="reset-dp" class='k-button'>Reset</button>
+
+		</div>
 		<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
 	</div>
 </body>
