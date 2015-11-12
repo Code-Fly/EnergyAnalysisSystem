@@ -11,3 +11,6 @@ http://localhost:8085/EnergyAnalysisSystem/api/dayaccount/query?callback=123123&
 
 # 月用量分析
 http://localhost:8080/EnergyAnalysisSystem/api/monthaccount/query?callback=123123&year=2015&mID=37
+
+# 年用量分析
+http://localhost:8080/EnergyAnalysisSystem/api/yearaccount/query?callback=123123&year=2014&infoID=000103
