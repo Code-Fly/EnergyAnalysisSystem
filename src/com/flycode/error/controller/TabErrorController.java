@@ -32,7 +32,7 @@ public class TabErrorController extends BaseController {
 			@RequestParam(value = "errClass", required = false) String errClass) {
 		TabErrorExample example = new TabErrorExample();
 		// 只查询正在告警的（ErrProcess=1）， 已经查看的告警(ErrProcess=0)不显示
-		if(null != errClass){
+		if(null != errClass && !"".equals(errClass.trim())){
 			example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo(errClass).andErrProcessFlagEqualTo(1);
 		} else {
 			example.or().andReadTimeBetween(beginDate, endDate).andErrProcessFlagEqualTo(1);
