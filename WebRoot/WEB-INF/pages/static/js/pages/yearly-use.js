@@ -40,16 +40,8 @@ $(document).ready(function() {
 		user3.value(null);
 	});
 
-	$("#tab-chart").on('shown.bs.tab', function(e) {
-		reloadChart();
-	})
-
-	$("#tab-data").on('shown.bs.tab', function(e) {
-		reloadGrid();
-	})
-
+	
 	$("#submit-dp").click(function() {
-		reloadChart();
 		reloadGrid();
 	});
 
@@ -98,187 +90,6 @@ $(document).ready(function() {
 		dataSource : null
 	});
 
-	$("#chart").kendoChart({
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/yearaccount/query?infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
-					dataType : "jsonp"
-				}
-			}
-		},
-		series : [ {
-			field : "janNumber",
-			name : "一月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#da3b36",
-		// axis : "janNumber"
-		}, {
-			field : "febNumber",
-			name : "二月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#e67d4a",
-		// axis : "febNumber"
-		}, {
-			field : "marNumber",
-			name : "三月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#f2b661",
-		// axis : "marNumber"
-		}, {
-			field : "aprNumber",
-			name : "四月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#5cb85c",
-		// axis : "aprNumber"
-		}, {
-			field : "mayNumber",
-			name : "五月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#5bc0de",
-		// axis : "mayNumber"
-		}, {
-			field : "junNumber",
-			name : "六月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#428bca",
-		// axis : "junNumber"
-		}, {
-			field : "julNumber",
-			name : "七月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#7030a0",
-		// axis : "julNumber"
-		}, {
-			field : "augNumber",
-			name : "八月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#00b0f0",
-		// axis : "augNumber"
-		}, {
-			field : "sepNumber",
-			name : "九月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#ffff00",
-		// axis : "sepNumber"
-		}, {
-			field : "octNumber",
-			name : "十月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#ffe0d9",
-		// axis : "octNumber"
-		}, {
-			field : "novNumber",
-			name : "十一月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#ebebeb",
-		// axis : "novNumber"
-		}, {
-			field : "decNumber",
-			name : "十二月 [kwh]",
-			type : "column",
-			markers : {
-				visible : false
-			},
-			color : "#cccccc",
-		// axis : "decNumber"
-		} ],
-		// valueAxes : [ {
-		// name : "janNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "febNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "marNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "aprNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "mayNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "junNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "julNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "augNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "sepNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "octNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "novNumber",
-		// color : "#007eff"
-		// }, {
-		// name : "decNumber",
-		// color : "#007eff"
-		// }],
-		legend : {
-			position : "bottom"
-		},
-		title : {
-			text : $("#start").val()
-		},
-		categoryAxis : {
-			majorGridLines : {
-				visible : false
-			},
-			majorTicks : {
-				visible : false
-			}
-		// axisCrossingValues : [ 999999 ],
-		},
-		tooltip : {
-			visible : true,
-			template : "<div>#= series.name #: #= value #</div>"
-		},
-		chartArea : {
-			background : "transparent"
-		},
-		dataBound : function(e) {
-			// alert($("#user-2").data("kendoComboBox").value())
-		}
-	});
 
 	$("#grid").kendoGrid({
 		excel : {
@@ -381,24 +192,7 @@ $(document).ready(function() {
 			width : 200
 		} ],
 
-	});
-
-	function reloadChart() {
-		var chart = $("#chart").data("kendoChart");
-		chart.setOptions({
-			dataSource : {
-				transport : {
-					read : {
-						url : _ctx + "/api/yearaccount/query?infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
-						dataType : "jsonp"
-					}
-				}
-			},
-			title : {
-				text : $("#start").val()
-			},
-		});
-	}
+	});	
 
 	function reloadGrid() {
 		var grid = $("#grid").data("kendoGrid");
