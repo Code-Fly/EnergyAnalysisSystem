@@ -291,7 +291,7 @@ $(document).ready(function() {
 
 	function startChange() {
 		var startDate = start.value(), endDate = end.value();
-		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0, 23, 59, 59);
 
 		if (startDate) {
 			startDate = new Date(startDate);
@@ -328,7 +328,7 @@ $(document).ready(function() {
 	function initDateTimePicker() {
 		start.max(end.value());
 		end.min(start.value());
-		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0, 23, 59, 59);
 		var startDateMin = new Date(end.value().getFullYear(), end.value().getMonth(), 1);
 		end.max(endDateMax);
 		start.min(startDateMin);

@@ -268,7 +268,7 @@ $(document).ready(function() {
 	});
 
 	function startChange() {
-		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0);
+		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0, 23, 59, 59);
 
 		var startDate = start.value(), endDate = end.value();
 
@@ -289,7 +289,7 @@ $(document).ready(function() {
 	function endChange() {
 		var endDate = end.value(), startDate = start.value();
 		var startDateMin = new Date(end.value().getFullYear(), 0, 1);
-		
+
 		if (endDate) {
 			endDate = new Date(endDate);
 			endDate.setDate(endDate.getDate());
@@ -307,7 +307,7 @@ $(document).ready(function() {
 	function initDateTimePicker() {
 		start.max(end.value());
 		end.min(start.value());
-		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0);
+		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0, 23, 59, 59);
 		var startDateMin = new Date(end.value().getFullYear(), 0, 1);
 		end.max(endDateMax);
 		start.min(startDateMin);
