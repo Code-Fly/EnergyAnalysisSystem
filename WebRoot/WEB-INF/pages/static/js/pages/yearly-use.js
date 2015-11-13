@@ -114,7 +114,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#ff1c1c",
+			color : "#da3b36",
 		// axis : "janNumber"
 		}, {
 			field : "febNumber",
@@ -123,7 +123,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#ffae00",
+			color : "#e67d4a",
 		// axis : "febNumber"
 		}, {
 			field : "marNumber",
@@ -132,7 +132,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#73c100",
+			color : "#f2b661",
 		// axis : "marNumber"
 		}, {
 			field : "aprNumber",
@@ -141,7 +141,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#007eff",
+			color : "#5cb85c",
 		// axis : "aprNumber"
 		}, {
 			field : "mayNumber",
@@ -150,7 +150,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#f3ac32",
+			color : "#5bc0de",
 		// axis : "mayNumber"
 		}, {
 			field : "junNumber",
@@ -159,7 +159,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#b8b8b8",
+			color : "#428bca",
 		// axis : "junNumber"
 		}, {
 			field : "julNumber",
@@ -168,7 +168,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#bb6e36",
+			color : "#e5f5fa",
 		// axis : "julNumber"
 		}, {
 			field : "augNumber",
@@ -177,7 +177,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-		// color : "#007eff",
+			color : "#eaf7ec",
 		// axis : "augNumber"
 		}, {
 			field : "sepNumber",
@@ -186,7 +186,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-		// color : "#007eff",
+			color : "#fbeed5",
 		// axis : "sepNumber"
 		}, {
 			field : "octNumber",
@@ -195,7 +195,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-		// color : "#007eff",
+			color : "#ffe0d9",
 		// axis : "octNumber"
 		}, {
 			field : "novNumber",
@@ -204,7 +204,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-		// color : "#007eff",
+			color : "#ebebeb",
 		// axis : "novNumber"
 		}, {
 			field : "decNumber",
@@ -213,7 +213,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-		// color : "#007eff",
+			color : "#cccccc",
 		// axis : "decNumber"
 		} ],
 		// valueAxes : [ {
