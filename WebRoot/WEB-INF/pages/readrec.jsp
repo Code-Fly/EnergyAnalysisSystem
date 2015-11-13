@@ -28,11 +28,11 @@
 							</div>
 						</div>
 						<div class="row show-grid">
-							<div class="col-md-5">
-								<input id="start" style="width: 100%;" />
+							<div class="col-md-5 text-center">
+								开始时间：<input id="start" />
 							</div>
-							<div class="col-md-5">
-								<input id="end" style="width: 100%;" />
+							<div class="col-md-5 text-center">
+								结束时间：<input id="end" />
 							</div>
 							<div class="col-md-2 text-center">
 								<button id="submit-dp" class='k-button'>提交</button>

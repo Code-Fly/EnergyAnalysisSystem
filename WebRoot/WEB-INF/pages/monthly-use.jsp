@@ -28,8 +28,8 @@
 							</div>
 						</div>
 						<div class="row show-grid">
-							<div class="col-md-8">
-								<input id="start" style="width: 100%;" />
+							<div class="col-md-8 text-center">
+								查询时间：<input id="start" />
 							</div>
 							<div class="col-md-4 text-center">
 								<button id="submit-dp" class='k-button'>提交</button>

@@ -139,7 +139,8 @@ $(document).ready(function() {
 		series : [ {
 			field : "dayNumber",
 			name : "日用量 [kwh]",
-			type : "column",
+			style : "smooth",
+			type : "line",
 			categoryField : "startTime",
 			markers : {
 				visible : false
