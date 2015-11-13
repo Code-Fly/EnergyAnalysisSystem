@@ -49,13 +49,108 @@ $(document).ready(function() {
 		columns : [ {
 			locked : true,
 			field : "nm",
-			title : "表具名称",
-			width : 200
+			title : "用户名称",
+			width : 150
 		}, {
 			field : "adr",
 			title : "表具编号",
+			width : 150
+		},
+		 {
+			field : "tFlow",
+			title : "瞬时流量",
+			width : 150
+		},
+		{
+			field : "curNumber",
+			title : "累计流量",
+			width : 150
+		}, 
+		{
+			field : "t",
+			title : "温度",
+			width : 100
+		},{
+			field : "p",
+			title : "压力",
+			width : 100
+		},
+		 {
+			field : "dayNum",
+			title : "日用量",
+			width : 100
+		}, 
+		 {
+			field : "monthNum",
+			title : "月用量",
+			width : 100
+		},
+		{
+			field : "readTime",
+			title : "采集时间",
 			width : 200
-		}, {
+		},
+		{
+			field : "range_Low",
+			title : "量程下限",
+			width : 150
+		},
+		{
+			field : "range_Hi",
+			title : "量程上限",
+			width : 150
+		}, 
+		{
+			field : "meterRange_Low",
+			title : "瞬时流量下限",
+			width : 150
+		},
+		{
+			field : "meterRange_Hi",
+			title : "瞬时流量上限",
+			width : 150
+		}, 
+		{
+			field : "dayDosage_hi",
+			title : "日用量上限",
+			width : 150
+		},  {
+			field : "dayDosage_low",
+			title : "日用量下限",
+			width : 150
+		},
+		{
+			field : "monDosage_hi",
+			title : "月用量上限",
+			width : 150
+		},  {
+			field : "monDosage_low",
+			title : "月用量下限",
+			width : 150
+		},
+		 {
+			field : "state",
+			title : "通讯状态",
+			width : 150
+		},
+		{
+			field : "stopFlag",
+			title : "停气报警",
+			template : function(dataItem) {
+				if (0 == dataItem.stopFlag) {
+					return "正常";
+				} else {
+					return "停气";
+				}
+			},
+			width : 150
+		},
+		{
+			field : "meterType",
+			title : "表型号",
+			width : 150
+		},
+		 {
 			template : function(dataItem) {
 				if (null == dataItem.ch) {
 					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.ch) + "</div>";
@@ -65,44 +160,13 @@ $(document).ready(function() {
 			},
 			field : "ch",
 			title : "通道号",
-			width : 200
-		}, {
-			field : "curNumber",
-			title : "累计流量",
-			width : 200
-		}, {
-			field : "dayDosage_hi",
-			title : "日用量上限",
-			width : 200
-		}, {
-			field : "dayDosage_low",
-			title : "日用量下限",
-			width : 200
-		}, {
-			field : "dayNum",
-			title : "日用量",
-			width : 200
-		}, {
-			field : "meterRange_Hi",
-			title : "瞬时流量上限",
-			width : 200
-		}, {
-			field : "meterRange_Low",
-			title : "瞬时流量下限",
-			width : 200
-		}, {
-			field : "mID",
-			title : "系统ID",
-			width : 200
-		}, {
-			field : "minDayNum",
-			title : "初始日用量",
-			width : 200
-		}, {
-			field : "minMonNum",
-			title : "初始月用量",
-			width : 200
-		} ],
+			width : 100
+		}, 
+		{
+			field : "mode",
+			title : "通讯模式",
+			width : 150
+		}]
 
 	});
 });
