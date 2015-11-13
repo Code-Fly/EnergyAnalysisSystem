@@ -168,7 +168,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#e5f5fa",
+			color : "#7030a0",
 		// axis : "julNumber"
 		}, {
 			field : "augNumber",
@@ -177,7 +177,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#eaf7ec",
+			color : "#00b0f0",
 		// axis : "augNumber"
 		}, {
 			field : "sepNumber",
@@ -186,7 +186,7 @@ $(document).ready(function() {
 			markers : {
 				visible : false
 			},
-			color : "#fbeed5",
+			color : "#ffff00",
 		// axis : "sepNumber"
 		}, {
 			field : "octNumber",
