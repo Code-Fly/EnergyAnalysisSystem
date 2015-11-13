@@ -18,6 +18,10 @@ http://localhost:8080/EnergyAnalysisSystem/api/yearaccount/query?callback=123123
 # 供电故障查询  errClass这个参数非必须，其他必须
 http://localhost:8080/EnergyAnalysisSystem/error/query?callback=123123&beginDate=2013-10-09 13:00:01&endDate=2013-10-19 00:00:01&errClass=202
 
+# 停气报警查询:errType = 4
+# 数据异常查询 :errType = 3
+http://localhost:8080/EnergyAnalysisSystem/readerr/query?callback=123123&beginDate=2013-10-09 13:00:01&endDate=2013-10-19 00:00:01&errType=3
+
 # 树形结构查询 infoID=0001 非必须，不传时返回根节点
 http://localhost:8085/EnergyAnalysisSystem/api/tree/query?callback=123123&infoID=0001
 
