@@ -49,8 +49,12 @@ $(document).ready(function() {
 	})
 
 	$("#submit-dp").click(function() {
-		reloadChart();
-		reloadGrid();
+		if($("#tab-content-chart").hasClass("active")){
+			reloadChart();
+		}
+		if($("#tab-content-data").hasClass("active")){
+			reloadGrid();
+		}
 	});
 
 	var today = new Date();
@@ -308,6 +312,10 @@ $(document).ready(function() {
 	}
 
 	function reloadChart() {
+		if (!validate()) {
+			alert("请输入查询参数");
+			return;
+		}
 		var chart = $("#chart").data("kendoChart");
 		chart.setOptions({
 			dataSource : {
@@ -325,6 +333,10 @@ $(document).ready(function() {
 	}
 
 	function reloadGrid() {
+		if (!validate()) {
+			alert("请输入查询参数");
+			return;
+		}
 		var grid = $("#grid").data("kendoGrid");
 		grid.setOptions({
 			dataSource : {
@@ -337,5 +349,12 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+	}
+
+	function validate() {
+		if ($("#user-3").data("kendoComboBox").value() == "" || $("#start").val() == "" || $("#end").val() == "") {
+			return false;
+		}
+		return true;
 	}
 });
