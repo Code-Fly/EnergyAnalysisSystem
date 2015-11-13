@@ -41,14 +41,29 @@ public class TabErrorController extends BaseController {
 			@RequestParam(value = "errFlag", required = false, defaultValue="0") String errFlag,
 			@RequestParam(value = "errProcessFlag", required = false) Integer errProcessFlag) {
 		TabErrorExample example = new TabErrorExample();
-		example.or().andReadTimeBetween(beginDate, endDate);
+		// 正常电压
 		if("1".equals(errFlag)){
-			example.or().andErrClassEqualTo("200");
-		} else if ("2".equals(errFlag)){
-			example.or().andErrClassNotEqualTo("200");
-		} 
-		if (null != errProcessFlag){
-			example.or().andErrProcessFlagEqualTo(errProcessFlag);
+			if (null != errProcessFlag){
+				example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo("200").andErrProcessFlagEqualTo(errProcessFlag);
+			} else {
+				example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo("200");
+			}
+		}
+		// 异常电压
+		else if ("2".equals(errFlag)){
+			if (null != errProcessFlag){
+				example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200").andErrProcessFlagEqualTo(errProcessFlag);
+			} else {
+				example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200");
+			}
+		}
+		// 全部电压记录
+		else {
+			if (null != errProcessFlag){
+				example.or().andReadTimeBetween(beginDate, endDate).andErrProcessFlagEqualTo(errProcessFlag);
+			} else {
+				example.or().andReadTimeBetween(beginDate, endDate);
+			}
 		}
 		String readRecs = JsonUtil.jsonArray2Sting(callBack,tabErrorService.selectByExample(example));
 		return readRecs;
