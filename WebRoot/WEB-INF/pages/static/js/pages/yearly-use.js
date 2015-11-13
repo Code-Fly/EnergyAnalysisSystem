@@ -28,10 +28,7 @@ $(document).ready(function() {
 		var user1 = $("#user-1").data("kendoComboBox");
 		var user2 = $("#user-2").data("kendoComboBox");
 		var user3 = $("#user-3").data("kendoComboBox");
-		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
-		end.value(today);
-		start.max(end.value());
-		start.value(today);
+		start.value(null);
 		user1.text(null);
 		user1.value(null);
 		user2.text(null);
@@ -50,7 +47,6 @@ $(document).ready(function() {
 	var start = $("#start").kendoDatePicker({
 		depth : "decade",
 		start : "decade",
-		value : today,
 		format : "yyyy",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");

@@ -28,10 +28,12 @@ $(document).ready(function() {
 		var user1 = $("#user-1").data("kendoComboBox");
 		var user2 = $("#user-2").data("kendoComboBox");
 		var user3 = $("#user-3").data("kendoComboBox");
-		end.max(new Date(today.getFullYear(), today.getMonth() + 1, 0));
-		end.value(today);
-		start.max(end.value());
-		start.value(today);
+		end.max(new Date(2099, 11, 31));
+		end.min(new Date(1900, 0, 1));
+		end.value(null);
+		start.max(new Date(2099, 11, 31));
+		start.min(new Date(1900, 0, 1));
+		start.value(null);
 		user1.text(null);
 		user1.value(null);
 		user2.text(null);
@@ -49,10 +51,10 @@ $(document).ready(function() {
 	})
 
 	$("#submit-dp").click(function() {
-		if($("#tab-content-chart").hasClass("active")){
+		if ($("#tab-content-chart").hasClass("active")) {
 			reloadChart();
 		}
-		if($("#tab-content-data").hasClass("active")){
+		if ($("#tab-content-data").hasClass("active")) {
 			reloadGrid();
 		}
 	});
@@ -60,20 +62,16 @@ $(document).ready(function() {
 	var today = new Date();
 
 	var start = $("#start").kendoDatePicker({
-		value : today,
 		change : startChange,
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
 
 	var end = $("#end").kendoDatePicker({
-		value : today,
 		change : endChange,
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-
-	initDateTimePicker();
 
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
@@ -270,7 +268,7 @@ $(document).ready(function() {
 	});
 
 	function startChange() {
-		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0);
 
 		var startDate = start.value(), endDate = end.value();
 
@@ -290,7 +288,8 @@ $(document).ready(function() {
 
 	function endChange() {
 		var endDate = end.value(), startDate = start.value();
-
+		var startDateMin = new Date(end.value().getFullYear(), 0, 1);
+		
 		if (endDate) {
 			endDate = new Date(endDate);
 			endDate.setDate(endDate.getDate());
@@ -302,13 +301,16 @@ $(document).ready(function() {
 			start.max(endDate);
 			end.min(endDate);
 		}
+		start.min(startDateMin);
 	}
 
 	function initDateTimePicker() {
 		start.max(end.value());
 		end.min(start.value());
-		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0);
+		var endDateMax = new Date(start.value().getFullYear() + 1, 0, 0);
+		var startDateMin = new Date(end.value().getFullYear(), 0, 1);
 		end.max(endDateMax);
+		start.min(startDateMin);
 	}
 
 	function reloadChart() {
