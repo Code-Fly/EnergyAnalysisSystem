@@ -235,35 +235,22 @@ $(document).ready(function() {
 			locked : true,
 			field : "nm",
 			title : "表具名称",
-			width : 200
-		}, {
+			width : 250
+		},
+		{
+			field : "collectDay",
+			title : "日期",
+			width : 250
+		},
+		{
 			field : "curNumber",
-			title : "当前数值",
-			width : 200
+			title : "当前表数",
+			width : 250
 		}, {
 			field : "dayNumber",
-			title : "日用量",
+			title : "日流量",
 			width : 200
-		}, {
-			template : function(dataItem) {
-				if (null == dataItem.areaID) {
-					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.areaID) + "</div>";
-				} else {
-					return dataItem.areaID;
-				}
-			},
-			field : "areaID",
-			title : "区域ID",
-			width : 200
-		}, {
-			field : "startTime",
-			title : "开始时间",
-			width : 200
-		}, {
-			field : "endTime",
-			title : "结束时间",
-			width : 200
-		} ],
+		}],
 
 	});
 
