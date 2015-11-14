@@ -235,22 +235,30 @@ $(document).ready(function() {
 			locked : true,
 			field : "nm",
 			title : "表具名称",
-			width : 250
+			width : 200
 		},
 		{
 			field : "collectDay",
 			title : "日期",
-			width : 250
+			width : 200
 		},
 		{
 			field : "curNumber",
 			title : "当前表数",
-			width : 250
+			width : 200
 		}, {
 			field : "dayNumber",
 			title : "日流量",
 			width : 200
-		}],
+		},{
+			field : "theoryFlag",
+			title : "数据状态",
+			values: [
+			         { text: "正常", value: 0 },
+			         { text: "超上限", value: 2 },
+			         { text: "超下限", value: 1 }],
+			width : 150
+		} ],
 
 	});
 

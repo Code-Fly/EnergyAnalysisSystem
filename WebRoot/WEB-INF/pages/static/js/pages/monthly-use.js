@@ -213,39 +213,30 @@ $(document).ready(function() {
 			// alert(JSON.stringify(selectedDataItems));
 			this.dataSource.read();
 		},
-		dataBound : function(e) {
-			var data = this.dataSource.data();
-			$.each(data, function(i, row) {
-				if (row.stopFlag == 1) {
-					$('tr[data-uid="' + row.uid + '"] ').css("color", "red");
-				}
-			});
-		},
+		
 		columns : [ {
 			locked : true,
 			field : "nm",
 			title : "表具名称",
-			width : 200
-		}, {
-			field : "monthNumber",
-			title : "月用量",
 			width : 300
-		}, {
-			template : function(dataItem) {
-				if (null == dataItem.areaID) {
-					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.areaID) + "</div>";
-				} else {
-					return dataItem.areaID;
-				}
-			},
-			field : "areaID",
-			title : "区域ID",
-			width : 300
-		}, {
+		}, 
+		{
 			field : "collectMon",
 			title : "采集时间",
-			width : 300
-		} ],
+			width : 250
+		} ,{
+			field : "monthNumber",
+			title : "当月用量",
+			width : 250
+		},{
+			field : "theoryFlag",
+			title : "数据状态",
+			values: [
+			         { text: "正常", value: 0 },
+			         { text: "超上限", value: 2 },
+			         { text: "超下限", value: 1 }],
+			width : 200
+		}],
 
 	});
 

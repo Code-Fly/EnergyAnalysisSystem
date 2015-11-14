@@ -131,61 +131,57 @@ $(document).ready(function() {
 		},
 		columns : [ {
 			locked : true,
-			field : "ID",
-			title : "ID",
+			field : "mID",
+			title : "表具ID",
 			width : 200
-		}, {
-			field : "collectYear",
-			title : "采集时间",
-			width : 200
-		}, {
+		},{
 			field : "janNumber",
 			title : "一月",
-			width : 200
+			width : 100
 		}, {
 			field : "febNumber",
 			title : "二月",
-			width : 200
+			width : 100
 		}, {
 			field : "marNumber",
 			title : "三月",
-			width : 200
+			width : 100
 		}, {
 			field : "aprNumber",
 			title : "四月",
-			width : 200
+			width : 100
 		}, {
 			field : "mayNumber",
 			title : "五月",
-			width : 200
+			width : 100
 		}, {
 			field : "junNumber",
 			title : "六月",
-			width : 200
+			width : 100
 		}, {
 			field : "julNumber",
 			title : "七月",
-			width : 200
+			width : 100
 		}, {
 			field : "augNumber",
 			title : "八月",
-			width : 200
+			width : 100
 		}, {
 			field : "sepNumber",
 			title : "九月",
-			width : 200
+			width : 100
 		}, {
 			field : "octNumber",
 			title : "十月",
-			width : 200
+			width : 100
 		}, {
 			field : "novNumber",
 			title : "十一月",
-			width : 200
+			width : 100
 		}, {
 			field : "decNumber",
 			title : "十二月",
-			width : 200
+			width : 100
 		} ],
 
 	});	

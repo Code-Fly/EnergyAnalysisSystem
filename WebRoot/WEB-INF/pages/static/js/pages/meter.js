@@ -147,13 +147,6 @@ $(document).ready(function() {
 			width : 150
 		},
 		 {
-			template : function(dataItem) {
-				if (null == dataItem.ch) {
-					return "<div style='color:red;'>" + kendo.htmlEncode(dataItem.ch) + "</div>";
-				} else {
-					return dataItem.ch;
-				}
-			},
 			field : "ch",
 			title : "通道号",
 			width : 100
