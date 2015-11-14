@@ -41,7 +41,7 @@ $(document).ready(function() {
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
-				if (row.stopFlag == 1) {
+				if (row.stopFlag == 2) {
 					$('tr[data-uid="' + row.uid + '"] ').css("color", "red");
 				}
 			});
@@ -136,13 +136,9 @@ $(document).ready(function() {
 		{
 			field : "stopFlag",
 			title : "停气报警",
-			template : function(dataItem) {
-				if (0 == dataItem.stopFlag) {
-					return "正常";
-				} else {
-					return "停气";
-				}
-			},
+			values: [
+			         { text: "正常", value: 0 },
+			         { text: "停气", value: 2 }],
 			width : 150
 		},
 		{
