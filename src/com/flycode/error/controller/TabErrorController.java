@@ -29,8 +29,7 @@ public class TabErrorController extends BaseController {
 	 * @param callBack
 	 * @param beginDate
 	 * @param endDate
-	 * @param errFlag 0:全部，1:正常，2:异常。
-	 * @param errProcessFlag errProcessFlag 0：告警未处理，1：告警已经处理
+	 * @param errClass 200:正常，201:低电压，202:电压超低，210：掉电电压正常，211：掉电电压低，212：掉电，电压超低。
 	 * @return
 	 */
 	@ResponseBody
@@ -38,35 +37,44 @@ public class TabErrorController extends BaseController {
 	public String queryErrors(@RequestParam(value = "callback", required = true) String callBack,
 			@RequestParam(value = "beginDate", required = true) String beginDate,
 			@RequestParam(value = "endDate", required = true) String endDate,
-			@RequestParam(value = "errFlag", required = false, defaultValue="0") String errFlag,
-			@RequestParam(value = "errProcessFlag", required = false) Integer errProcessFlag) {
+			@RequestParam(value = "errClass", required = false, defaultValue="200") String errClass) {
 		TabErrorExample example = new TabErrorExample();
-		// 正常电压
-		if("1".equals(errFlag)){
-			if (null != errProcessFlag){
-				example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo("200").andErrProcessFlagEqualTo(errProcessFlag);
-			} else {
-				example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo("200");
-			}
-		}
-		// 异常电压
-		else if ("2".equals(errFlag)){
-			if (null != errProcessFlag){
-				example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200").andErrProcessFlagEqualTo(errProcessFlag);
-			} else {
-				example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200");
-			}
-		}
-		// 全部电压记录
-		else {
-			if (null != errProcessFlag){
-				example.or().andReadTimeBetween(beginDate, endDate).andErrProcessFlagEqualTo(errProcessFlag);
-			} else {
-				example.or().andReadTimeBetween(beginDate, endDate);
-			}
+		// 200，查询所有告警
+		if("200".equals(errClass)){
+			example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200");
+		} else {
+			example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo(errClass);
 		}
 		String readRecs = JsonUtil.jsonArray2Sting(callBack,tabErrorService.selectByExample(example));
 		return readRecs;
 	}
+	
+	
+
+	/**
+	 * 
+	 * @param callBack
+	 * @param beginDate
+	 * @param endDate
+	 * @param mID 表据ID
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/meterlog/query", produces = "application/x-javascript;charset=UTF-8")
+	public String queryMeterLog(@RequestParam(value = "callback", required = true) String callBack,
+			@RequestParam(value = "beginDate", required = true) String beginDate,
+			@RequestParam(value = "endDate", required = true) String endDate,
+			@RequestParam(value = "mID", required = false, defaultValue = "0") Integer mID) {
+		TabErrorExample example = new TabErrorExample();
+		// mID 为空时查询全部记录
+		if (mID.equals("0")) {
+			example.or().andReadTimeBetween(beginDate, endDate);
+		} else {
+			example.or().andReadTimeBetween(beginDate, endDate).andMIDEqualTo(mID);
+		}
+		String readRecs = JsonUtil.jsonArray2Sting(callBack,tabErrorService.selectByExample(example));
+		return readRecs;
+	}
+	
 
 }
