@@ -125,7 +125,7 @@ $(document).ready(function() {
 		columns : [ {
 			field : "nm",
 			title : "用户名称",
-			width : 200
+			width : 150
 		},
 		{
 			field : "info",
@@ -135,7 +135,14 @@ $(document).ready(function() {
 		{
 			field : "readTime",
 			title : "通讯时间",
-			width : 300
+			width : 200
+		},{
+			field : "errProcessFlag",
+			title : "状态",
+			values: [
+			         { text: "未确认", value: 0 },
+			         { text: "已确认", value: 1 }],
+			width : 100
 		}],
 
 	});
