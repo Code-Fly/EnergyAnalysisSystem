@@ -130,6 +130,7 @@ $(document).ready(function() {
 	});
 
 	$("#chart").kendoChart({
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -212,6 +213,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -352,6 +354,7 @@ $(document).ready(function() {
 				text : $("#start").val() + " ~ " + $("#end").val()
 			},
 		});
+		chart.dataSource.read();
 	}
 
 	function reloadGrid() {
@@ -371,6 +374,7 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+		grid.dataSource.read();
 	}
 
 	function validate() {

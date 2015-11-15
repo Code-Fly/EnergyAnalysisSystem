@@ -31,6 +31,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -124,6 +125,7 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+		grid.dataSource.read();
 	}
 
 	function validate() {
