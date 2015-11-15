@@ -62,7 +62,8 @@ $(document).ready(function() {
 		format : "yyyy",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-
+	start.value(today);
+	
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",

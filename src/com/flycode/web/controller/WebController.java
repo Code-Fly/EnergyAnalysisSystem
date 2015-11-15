@@ -45,6 +45,18 @@ public class WebController extends BaseController {
 		return "/yearly-use";
 	}
 	
+	/**
+	 * 系统日志查询
+	 * @param request
+	 * @param response
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/log")
+	public String log(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/log";
+	}
+	
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/login";

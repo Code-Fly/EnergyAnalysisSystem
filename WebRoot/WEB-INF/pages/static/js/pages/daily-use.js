@@ -66,13 +66,14 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-
+	start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate()-1));
 	var end = $("#end").kendoDatePicker({
 		change : endChange,
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-
+	end.value(today);
+	
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",
