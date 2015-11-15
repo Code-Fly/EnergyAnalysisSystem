@@ -61,14 +61,14 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
+	//start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
 	
 	var end = $("#end").kendoDateTimePicker({
 		change : endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	end.value(today);
+	//end.value(today);
 	
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
