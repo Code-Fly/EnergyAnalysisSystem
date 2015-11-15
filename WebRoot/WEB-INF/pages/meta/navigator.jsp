@@ -36,10 +36,10 @@
 				<li><a href="daily-use"><i class="fa fa-calendar-minus-o fa-fw"></i> 日用量分析</a></li>
 				<li><a href="monthly-use"><i class="fa fa-calendar-plus-o fa-fw"></i> 月用量分析</a></li>
 				<li><a href="yearly-use"><i class="fa fa-calendar-times-o fa-fw"></i> 年用量分析</a></li>
-				<li><a href="#"><i class="fa fa-flash fa-fw"></i> 供电故障</a></li>
-				<li><a href="#"><i class="fa fa-fire fa-fw"></i> 停气报警</a></li>
-				<li><a href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> 数据异常</a></li>
-				<li><a href="meter-log"><i class="fa fa-files-o fa-fw"></i> 抄表记录</a></li>
+				<li><a href="elec-alarm"><i class="fa fa-flash fa-fw"></i> 供电故障</a></li>
+				<li><a href="gas-alarm"><i class="fa fa-fire fa-fw"></i> 停气报警</a></li>
+				<li><a href="error"><i class="fa fa-exclamation-triangle fa-fw"></i> 数据异常</a></li>
+				<li><a href="meter-log"><i class="fa fa-files-o fa-fw"></i> 抄电压记录</a></li>
 				<li><a href="log"><i class="fa fa-database fa-fw"></i> 系统日志</a></li>
 			</ul>
 		</div>

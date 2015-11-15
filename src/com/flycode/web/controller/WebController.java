@@ -45,6 +45,16 @@ public class WebController extends BaseController {
 		return "/yearly-use";
 	}
 	
+	@RequestMapping(value = "/gas-alarm")
+	public String gasAlarm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/gas-alarm";
+	}
+	
+	@RequestMapping(value = "/elec-alarm")
+	public String elecAlarm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/elec-alarm";
+	}
+	
 	/**
 	 * 系统日志查询
 	 * @param request
