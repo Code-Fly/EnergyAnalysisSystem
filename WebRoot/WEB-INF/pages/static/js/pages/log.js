@@ -5,7 +5,11 @@ $(document).ready(function() {
 	});
 
 	$("#reset-dp").click(function() {
+		end.max(new Date(2099, 11, 31));
+		end.min(new Date(1900, 0, 1));
 		end.value(null);
+		start.max(new Date(2099, 11, 31));
+		start.min(new Date(1900, 0, 1));
 		start.value(null);
 	});
 
