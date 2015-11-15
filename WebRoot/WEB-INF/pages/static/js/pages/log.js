@@ -1,29 +1,13 @@
 $(document).ready(function() {
-	$("#export-img").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportImage().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.png",
-			});
-		});
-	});
-
-	$("#export-svg").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportSVG().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.svg",
-			});
-		});
-	});
-
 	$("#export-excel").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
 	});
 
+	$("#reset-dp").click(function() {
+		end.value(null);
+		start.value(null);
+	});
 
 	
 	$("#submit-dp").click(function() {
@@ -117,41 +101,41 @@ $(document).ready(function() {
 		});
 		grid.dataSource.read();
 	}
+
 	function startChange() {
-		var startDate = start.value(), endDate = end.value();
-		var endDateMax = new Date(start.value().getFullYear(), start.value().getMonth() + 1, 0, 23, 59, 59);
+        var startDate = start.value(),
+        endDate = end.value();
 
-		if (startDate) {
-			startDate = new Date(startDate);
-			startDate.setDate(startDate.getDate());
-			end.min(startDate);
-		} else if (endDate) {
-			start.max(new Date(endDate));
-		} else {
-			endDate = new Date();
-			start.max(endDate);
-			end.min(endDate);
-		}
-		end.max(endDateMax);
-	}
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate());
+            end.min(startDate);
+        } else if (endDate) {
+            start.max(new Date(endDate));
+        } else {
+            endDate = new Date();
+            start.max(endDate);
+            end.min(endDate);
+        }
+    }
 
-	function endChange() {
-		var endDate = end.value(), startDate = start.value();
-		var startDateMin = new Date(end.value().getFullYear(), end.value().getMonth(), 1);
+    function endChange() {
+        var endDate = end.value(),
+        startDate = start.value();
 
-		if (endDate) {
-			endDate = new Date(endDate);
-			endDate.setDate(endDate.getDate());
-			start.max(endDate);
-		} else if (startDate) {
-			end.min(new Date(startDate));
-		} else {
-			endDate = new Date();
-			start.max(endDate);
-			end.min(endDate);
-		}
-		start.min(startDateMin);
-	}
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate());
+            start.max(endDate);
+        } else if (startDate) {
+            end.min(new Date(startDate));
+        } else {
+            endDate = new Date();
+            start.max(endDate);
+            end.min(endDate);
+        }
+    }
+	
 	function validate() {
 		if ( $("#end").val() == "" || $("#start").val() == "") {
 			return false;
