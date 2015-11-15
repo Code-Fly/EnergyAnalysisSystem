@@ -34,7 +34,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+					url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=4",
 					dataType : "jsonp"
 				}
 			},
@@ -117,7 +117,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+						url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=4",
 						dataType : "jsonp"
 					}
 				},
