@@ -13,7 +13,6 @@ $(document).ready(function() {
 		start.value(null);
 	});
 
-	
 	$("#submit-dp").click(function() {
 		reloadGrid();
 	});
@@ -21,19 +20,17 @@ $(document).ready(function() {
 	var today = new Date();
 
 	var start = $("#start").kendoDateTimePicker({
-		change : startChange,
+		change: startChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	//start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
-	
+
 	var end = $("#end").kendoDateTimePicker({
-		change : endChange,
+		change: endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	//end.value(today);
-	
+
 	$("#grid").kendoGrid({
 		excel : {
 			fileName : "Export.xlsx",
@@ -44,7 +41,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/log/query?beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+					url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=4",
 					dataType : "jsonp"
 				}
 			},
@@ -58,6 +55,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
@@ -68,27 +76,47 @@ $(document).ready(function() {
 		},
 		columns : [ {
 			locked : true,
-			field : "logID",
-			title : "日志ID",
-			width : 100
-		},{
-			field : "logTime",
-			title : "日志时间",
-			width : 250
+			field : "nm",
+			title : "表具名称",
+			width : 200
 		}, {
-			field : "logInfo",
-			title : "日志信息",
-			width : 550
+			field : "curNumber",
+			title : "当前数值",
+			width : 200
 		}, {
-			field : "sim",
-			title : "号码",
-			width : 100
-		}],
+			field : "cd",
+			title : "帐号",
+			width : 200
+		}, {
+			field : "opName",
+			title : "操作员",
+			width : 200
+		}, {
+			template : function(dataItem) {
+				return 24;
+			},
+			field : "data",
+			title : "停气检测值",
+			width : 200
+		}, {
+			field : "processTime",
+			title : "处理时间",
+			width : 200
+		}, {
+			field : "readTime",
+			title : "停气检测时间",
+			width : 200
+		}, {
+			field : "comTime",
+			title : "停气时间",
+			width : 200
+		} ],
 
-	});	
+	});
 
 	function reloadGrid() {
 		if (!validate()) {
+			alert("请输入查询参数");
 			return;
 		}
 		var grid = $("#grid").data("kendoGrid");
@@ -96,7 +124,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/log/query?beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=4",
 						dataType : "jsonp"
 					}
 				},
@@ -105,7 +133,7 @@ $(document).ready(function() {
 		});
 		grid.dataSource.read();
 	}
-
+	
 	function startChange() {
         var startDate = start.value(),
         endDate = end.value();
@@ -139,11 +167,12 @@ $(document).ready(function() {
             end.min(endDate);
         }
     }
-	
+
 	function validate() {
-		if ( $("#end").val() == "" || $("#start").val() == "") {
+		if ($("#start").val() == "" || $("#end").val() == "") {
 			return false;
 		}
 		return true;
 	}
+
 });

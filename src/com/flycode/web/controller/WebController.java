@@ -86,9 +86,9 @@ public class WebController extends BaseController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/error")
-	public String error(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return "/error";
+	@RequestMapping(value = "/data-error")
+	public String dataError(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/data-error";
 	}
 	
 	

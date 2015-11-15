@@ -66,14 +66,15 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-	start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate()-1));
+	// start.value(new
+	// Date(today.getFullYear(),today.getMonth(),today.getDate()-1));
 	var end = $("#end").kendoDatePicker({
 		change : endChange,
 		format : "yyyy-MM-dd",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-	end.value(today);
-	
+	// end.value(today);
+
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",
@@ -196,6 +197,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
+		autoBind : false,
 		dataSource : {
 			transport : {
 				read : {
@@ -213,17 +215,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-//		change : function(e) {
-//			var selectedRows = this.select();
-//			var selectedDataItems = [];
-//			for (var i = 0; i < selectedRows.length; i++) {
-//				var dataItem = this.dataItem(selectedRows[i]);
-//				selectedDataItems.push(dataItem);
-//			}
-//			// selectedDataItems contains all selected data items
-//			// alert(JSON.stringify(selectedDataItems));
-//			this.dataSource.read();
-//		},
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
@@ -237,13 +239,11 @@ $(document).ready(function() {
 			field : "nm",
 			title : "表具名称",
 			width : 200
-		},
-		{
+		}, {
 			field : "collectDay",
 			title : "日期",
 			width : 200
-		},
-		{
+		}, {
 			field : "curNumber",
 			title : "当前表数",
 			width : 200
@@ -251,13 +251,19 @@ $(document).ready(function() {
 			field : "dayNumber",
 			title : "日流量",
 			width : 200
-		},{
+		}, {
 			field : "theoryFlag",
 			title : "数据状态",
-			values: [
-			         { text: "正常", value: 0 },
-			         { text: "超上限", value: 2 },
-			         { text: "超下限", value: 1 }],
+			values : [ {
+				text : "正常",
+				value : 0
+			}, {
+				text : "超上限",
+				value : 2
+			}, {
+				text : "超下限",
+				value : 1
+			} ],
 			width : 150
 		} ],
 
@@ -328,6 +334,7 @@ $(document).ready(function() {
 				text : $("#start").val() + " ~ " + $("#end").val()
 			},
 		});
+		chart.dataSource.read();
 	}
 
 	function reloadGrid() {
@@ -347,6 +354,7 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+		grid.dataSource.read();
 	}
 
 	function validate() {

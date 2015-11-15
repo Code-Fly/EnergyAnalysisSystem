@@ -5,7 +5,7 @@
 <head>
 <title>能源监测系统</title>
 <%@ include file="meta/meta.jsp"%>
-<script type="text/javascript" src="${ctx}/static/js/pages/log.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/pages/data-error.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -15,7 +15,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">系统日志</h1>
+						<h1 class="page-header">数据异常</h1>
 						<div class="row show-grid">
 							<div class="col-md-5 text-center">
 								开始时间：<input id="start" />
@@ -44,9 +44,8 @@
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
-								<div id="grid" style="margin-top: 1em;"></div>
-							</div>
-							<!-- /.panel-body -->
+								<div id="grid" style="margin-top: 1em;"></div> </div>
+								<!-- /.panel-body -->
 						</div>
 						<!-- /.panel -->
 					</div>

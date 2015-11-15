@@ -37,7 +37,6 @@ $(document).ready(function() {
 		user3.value(null);
 	});
 
-	
 	$("#submit-dp").click(function() {
 		reloadGrid();
 	});
@@ -50,7 +49,7 @@ $(document).ready(function() {
 		format : "yyyy",
 		culture : "zh-CN"
 	}).data("kendoDatePicker");
-	start.value(new Date());
+	// start.value(new Date());
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",
@@ -86,13 +85,13 @@ $(document).ready(function() {
 		dataSource : null
 	});
 
-
 	$("#grid").kendoGrid({
 		excel : {
 			fileName : "Export.xlsx",
 			filterable : true,
 			allPages : true
 		},
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -110,17 +109,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-//		change : function(e) {
-//			var selectedRows = this.select();
-//			var selectedDataItems = [];
-//			for (var i = 0; i < selectedRows.length; i++) {
-//				var dataItem = this.dataItem(selectedRows[i]);
-//				selectedDataItems.push(dataItem);
-//			}
-//			// selectedDataItems contains all selected data items
-//			// alert(JSON.stringify(selectedDataItems));
-//			this.dataSource.read();
-//		},
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
@@ -134,7 +133,7 @@ $(document).ready(function() {
 			field : "mID",
 			title : "表具ID",
 			width : 200
-		},{
+		}, {
 			field : "janNumber",
 			title : "一月",
 			width : 100
@@ -184,7 +183,7 @@ $(document).ready(function() {
 			width : 100
 		} ],
 
-	});	
+	});
 
 	function reloadGrid() {
 		if (!validate()) {
@@ -203,8 +202,9 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+		grid.dataSource.read();
 	}
-	
+
 	function validate() {
 		if ($("#user-2").data("kendoComboBox").value() == "" || $("#start").val() == "") {
 			return false;

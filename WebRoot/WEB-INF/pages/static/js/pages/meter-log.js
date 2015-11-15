@@ -61,14 +61,14 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
+	//start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
 	
 	var end = $("#end").kendoDateTimePicker({
 		change : endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	end.value(today);
+	//end.value(today);
 	
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
@@ -127,6 +127,7 @@ $(document).ready(function() {
 	});
 
 	$("#chart").kendoChart({
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -192,6 +193,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
+		autoBind: false,
 		dataSource : {
 			transport : {
 				read : {
@@ -311,6 +313,7 @@ $(document).ready(function() {
 				text : $("#start").val() + " ~ " + $("#end").val()
 			},
 		});
+		chart.dataSource.read();
 	}
 
 	function reloadGrid() {
@@ -330,6 +333,7 @@ $(document).ready(function() {
 				pageSize : 20,
 			}
 		});
+		grid.dataSource.read();
 	}
 
 	function validate() {
