@@ -213,17 +213,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-		change : function(e) {
-			var selectedRows = this.select();
-			var selectedDataItems = [];
-			for (var i = 0; i < selectedRows.length; i++) {
-				var dataItem = this.dataItem(selectedRows[i]);
-				selectedDataItems.push(dataItem);
-			}
-			// selectedDataItems contains all selected data items
-			// alert(JSON.stringify(selectedDataItems));
-			this.dataSource.read();
-		},
+//		change : function(e) {
+//			var selectedRows = this.select();
+//			var selectedDataItems = [];
+//			for (var i = 0; i < selectedRows.length; i++) {
+//				var dataItem = this.dataItem(selectedRows[i]);
+//				selectedDataItems.push(dataItem);
+//			}
+//			// selectedDataItems contains all selected data items
+//			// alert(JSON.stringify(selectedDataItems));
+//			this.dataSource.read();
+//		},
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
