@@ -16,11 +16,13 @@ $(document).ready(function() {
 	var today = new Date();
 
 	var start = $("#start").kendoDateTimePicker({
+		change: startChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
 
 	var end = $("#end").kendoDateTimePicker({
+		change: endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
@@ -127,6 +129,40 @@ $(document).ready(function() {
 		});
 		grid.dataSource.read();
 	}
+	
+	function startChange() {
+        var startDate = start.value(),
+        endDate = end.value();
+
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate());
+            end.min(startDate);
+        } else if (endDate) {
+            start.max(new Date(endDate));
+        } else {
+            endDate = new Date();
+            start.max(endDate);
+            end.min(endDate);
+        }
+    }
+
+    function endChange() {
+        var endDate = end.value(),
+        startDate = start.value();
+
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate());
+            start.max(endDate);
+        } else if (startDate) {
+            end.min(new Date(startDate));
+        } else {
+            endDate = new Date();
+            start.max(endDate);
+            end.min(endDate);
+        }
+    }
 
 	function validate() {
 		if ($("#start").val() == "" || $("#end").val() == "") {
