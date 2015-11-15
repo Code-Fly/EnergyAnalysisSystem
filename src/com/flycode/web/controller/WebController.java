@@ -57,6 +57,31 @@ public class WebController extends BaseController {
 		return "/log";
 	}
 	
+	/**
+	 * 抄电压记录查询
+	 * @param request
+	 * @param response
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/meter-log")
+	public String meterLog(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/meter-log";
+	}
+	
+	/**
+	 * 电压告警查询
+	 * @param request
+	 * @param response
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/error")
+	public String error(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/error";
+	}
+	
+	
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/login";
