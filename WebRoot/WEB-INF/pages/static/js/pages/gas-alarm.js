@@ -1,0 +1,129 @@
+$(document).ready(function() {
+	$("#export-excel").click(function(e) {
+		var grid = $("#grid").data("kendoGrid");
+		grid.saveAsExcel();
+	});
+
+	$("#reset-dp").click(function() {
+		end.value(null);
+		start.value(null);
+	});
+
+	$("#submit-dp").click(function() {
+		reloadGrid();
+	});
+
+	var today = new Date();
+
+	var start = $("#start").kendoDateTimePicker({
+		format : "yyyy-MM-dd HH:mm:ss",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	var end = $("#end").kendoDateTimePicker({
+		format : "yyyy-MM-dd HH:mm:ss",
+		culture : "zh-CN"
+	}).data("kendoDateTimePicker");
+
+	$("#grid").kendoGrid({
+		excel : {
+			fileName : "Export.xlsx",
+			filterable : true,
+			allPages : true
+		},
+		dataSource : {
+			transport : {
+				read : {
+					url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+					dataType : "jsonp"
+				}
+			},
+			pageSize : 10,
+		},
+		sortable : true,
+		filterable : true,
+		pageable : {
+			refresh : true,
+			pageSizes : true,
+			buttonCount : 5
+		},
+		selectable : "row",
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
+		dataBound : function(e) {
+			var data = this.dataSource.data();
+			$.each(data, function(i, row) {
+				if (row.stopFlag == 1) {
+					$('tr[data-uid="' + row.uid + '"] ').css("color", "red");
+				}
+			});
+		},
+		columns : [ {
+			locked : true,
+			field : "nm",
+			title : "表具名称",
+			width : 200
+		}, {
+			field : "curNumber",
+			title : "当前数值",
+			width : 200
+		}, {
+			field : "cd",
+			title : "帐号",
+			width : 200
+		} , {
+			field : "opName",
+			title : "操作员",
+			width : 200
+		}, {
+			field : "processTime",
+			title : "处理时间",
+			width : 200
+		}, {
+			field : "readTime",
+			title : "停气检测时间",
+			width : 200
+		}, {
+			field : "comTime",
+			title : "停气时间",
+			width : 200
+		} ],
+
+	});
+
+	function reloadGrid() {
+		if (!validate()) {
+			alert("请输入查询参数");
+			return;
+		}
+		var grid = $("#grid").data("kendoGrid");
+		grid.setOptions({
+			dataSource : {
+				transport : {
+					read : {
+						url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+						dataType : "jsonp"
+					}
+				},
+				pageSize : 20,
+			}
+		});
+	}
+
+	function validate() {
+		if ($("#start").val() == "" || $("#end").val() == "") {
+			return false;
+		}
+		return true;
+	}
+
+});
