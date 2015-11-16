@@ -14,6 +14,7 @@ import com.flycode.area.service.iface.TabAreaService;
 import com.flycode.common.BaseController;
 import com.flycode.yearaccount.entity.TabYearAccountExample;
 import com.flycode.yearaccount.service.iface.TabYearAccountService;
+import com.flycode.oplience.entity.TabMasterOpLienceExample;
 import com.flycode.util.JsonUtil;
 
 /**
@@ -42,7 +43,12 @@ public class TabYearAccountController extends BaseController {
 		@RequestMapping(value = "/yearaccount/query", produces = "application/x-javascript;charset=UTF-8")
 		public String queryYearAccounts(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "year", required = true) String year,
-				@RequestParam(value = "infoID", required = true) String infoID) {
+				@RequestParam(value = "infoID", required = true) String infoID,
+				@RequestParam(value = "opID", required = true) int opID) {
+			
+			TabMasterOpLienceExample opLienceExample= new TabMasterOpLienceExample();
+			opLienceExample.or().andOpIDEqualTo(opID);
+			
 			TabArea area = tabAreaService.selectByPrimaryKey(infoID);
 			TabYearAccountExample yearAccountexample = new TabYearAccountExample();
 			// 域存在
@@ -51,9 +57,9 @@ public class TabYearAccountController extends BaseController {
 			}
 			// 域的lever=l 则查询全部
 			else if (1 == area.getLevel()){	
-				yearAccountexample.or().andCollectYearEqualTo(year);
+				yearAccountexample.or().andCollectYearEqualTo(year).andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
 			} else {
-				yearAccountexample.or().andInfoIDEqualTo(infoID).andCollectYearEqualTo(year);
+				yearAccountexample.or().andInfoIDEqualTo(infoID).andCollectYearEqualTo(year).andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
 			}
 			String readRecs = JsonUtil.jsonArray2Sting(callBack,tabYearAccountService.selectByExample(yearAccountexample));
 			return readRecs;

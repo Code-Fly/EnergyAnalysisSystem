@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flycode.common.BaseController;
+import com.flycode.meter.entity.TabMeterExample;
+import com.flycode.oplience.entity.TabMasterOpLienceExample;
 import com.flycode.readerr.entity.TabReadErrExample;
 import com.flycode.readerr.service.iface.TabReadErrService;
 import com.flycode.util.JsonUtil;
@@ -39,9 +41,12 @@ public class TabReadErrController extends BaseController {
 		public String queryReadErrs(@RequestParam(value = "callback", required = true) String callBack,
 				@RequestParam(value = "beginDate", required = true) String beginDate,
 				@RequestParam(value = "endDate", required = true) String endDate,
-				@RequestParam(value = "errType", required = true) int errType) {
+				@RequestParam(value = "errType", required = true) int errType,
+				@RequestParam(value = "opID", required = true) int opID) {
+			TabMasterOpLienceExample opLienceExample= new TabMasterOpLienceExample();
+			opLienceExample.or().andOpIDEqualTo(opID);
 			TabReadErrExample example = new TabReadErrExample();
-			example.or().andReadTimeBetween(beginDate, endDate).andErrTypeEqualTo(errType);
+			example.or().andReadTimeBetween(beginDate, endDate).andErrTypeEqualTo(errType).andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
 			String readErrs = JsonUtil.jsonArray2Sting(callBack,tabReadErrService.selectByExample(example));
 			return readErrs;
 		}

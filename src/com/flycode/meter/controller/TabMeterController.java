@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flycode.common.BaseController;
+import com.flycode.meter.entity.TabMeterExample;
 import com.flycode.meter.service.iface.TabMeterService;
+import com.flycode.oplience.entity.TabMasterOpLienceExample;
 import com.flycode.util.JsonUtil;
 
 /**
@@ -20,13 +22,19 @@ import com.flycode.util.JsonUtil;
 @Controller
 @RequestMapping(value = "/api")
 public class TabMeterController extends BaseController {
+	
 	@Autowired
 	private TabMeterService tabMeterService;
 
 	@ResponseBody
 	@RequestMapping(value = "/meter/query", produces = "application/x-javascript;charset=UTF-8")
-	public String queryMeters(@RequestParam(value = "callback", required = true) String callBack) {
-		String meters = JsonUtil.jsonArray2Sting(callBack,tabMeterService.selectByExample(null));
+	public String queryMeters(@RequestParam(value = "callback", required = true) String callBack,
+			@RequestParam(value = "opID", required = true) Integer opID) {
+		TabMeterExample example = new TabMeterExample();
+		TabMasterOpLienceExample opLienceExample= new TabMasterOpLienceExample();
+		opLienceExample.or().andOpIDEqualTo(opID);
+		example.or().andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
+		String meters = JsonUtil.jsonArray2Sting(callBack,tabMeterService.selectByExample(example));
 		return meters;
 	}
 

@@ -80,37 +80,34 @@ $(document).ready(function() {
 			title : "表具名称",
 			width : 200
 		}, {
-			field : "curNumber",
-			title : "当前数值",
+			field : "tFlow",
+			title : "当前表数",
 			width : 200
-		}, {
-			field : "cd",
-			title : "帐号",
+		}, 
+		{
+			field : "tFlow",
+			title : "故障表数",
 			width : 200
-		}, {
+		},
+		 {
+			field : "readTime",
+			title : "抄表时间",
+			width : 200
+		}, 
+		{
+			field : "comTime",
+			title : "通讯时间",
+			width : 200
+		} ,
+		 {
 			field : "opName",
 			title : "操作员",
-			width : 200
-		}, {
-			template : function(dataItem) {
-				return 24;
-			},
-			field : "data",
-			title : "停气检测值",
 			width : 200
 		}, {
 			field : "processTime",
 			title : "处理时间",
 			width : 200
-		}, {
-			field : "readTime",
-			title : "停气检测时间",
-			width : 200
-		}, {
-			field : "comTime",
-			title : "停气时间",
-			width : 200
-		} ],
+		}],
 
 	});
 
