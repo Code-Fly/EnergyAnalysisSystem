@@ -3,6 +3,7 @@
  */
 package com.flycode.area.service.imp;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class TabAreaServiceImp implements TabAreaService {
 	}
 
 	@Override
-	public List<TabArea> selectByInfoID(String infoID) {
+	public List<TabArea> selectByInfoID(HashMap<String,Object> infoID) {
 		return areaMapper.selectByInfoID(infoID);
 	}
 	

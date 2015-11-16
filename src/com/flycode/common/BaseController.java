@@ -7,10 +7,13 @@ package com.flycode.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.flycode.oplience.service.iface.TabMasterOpLienceService;
 
 
 
@@ -19,6 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  */
 public abstract class BaseController {
+	
+	@Autowired
+	protected TabMasterOpLienceService tabMasterOpLienceService;
+	
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
 	/**

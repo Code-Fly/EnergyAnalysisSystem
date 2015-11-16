@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flycode.common.BaseController;
 import com.flycode.error.entity.TabErrorExample;
 import com.flycode.error.service.iface.TabErrorService;
+import com.flycode.oplience.entity.TabMasterOpLienceExample;
 import com.flycode.util.JsonUtil;
 
 /**
@@ -23,7 +24,7 @@ import com.flycode.util.JsonUtil;
 public class TabErrorController extends BaseController {
 	@Autowired
 	private TabErrorService tabErrorService;
-
+	
 	/**
 	 * 
 	 * @param callBack
@@ -37,13 +38,16 @@ public class TabErrorController extends BaseController {
 	public String queryErrors(@RequestParam(value = "callback", required = true) String callBack,
 			@RequestParam(value = "beginDate", required = true) String beginDate,
 			@RequestParam(value = "endDate", required = true) String endDate,
-			@RequestParam(value = "errClass", required = false, defaultValue="200") String errClass) {
+			@RequestParam(value = "errClass", required = false, defaultValue="200") String errClass,
+			@RequestParam(value = "opID", required = true) Integer opID) {
 		TabErrorExample example = new TabErrorExample();
+		TabMasterOpLienceExample opLienceExample=  new TabMasterOpLienceExample();
+		opLienceExample.or().andOpIDEqualTo(opID);
 		// 200，查询所有告警
 		if("200".equals(errClass)){
-			example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200");
+			example.or().andReadTimeBetween(beginDate, endDate).andErrClassNotEqualTo("200").andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
 		} else {
-			example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo(errClass);
+			example.or().andReadTimeBetween(beginDate, endDate).andErrClassEqualTo(errClass).andMIDIn(tabMasterOpLienceService.selectmIDByExample(opLienceExample));
 		}
 		String readRecs = JsonUtil.jsonArray2Sting(callBack,tabErrorService.selectByExample(example));
 		return readRecs;
@@ -52,7 +56,7 @@ public class TabErrorController extends BaseController {
 	
 
 	/**
-	 * 
+	 * 查询电压记录表
 	 * @param callBack
 	 * @param beginDate
 	 * @param endDate
