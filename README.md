@@ -25,8 +25,8 @@ http://localhost:8080/EnergyAnalysisSystem/api/meterlog/query?callback=123123&be
 # 数据异常查询 :errType = 3
 http://localhost:8080/EnergyAnalysisSystem/api/readerr/query?callback=123123&beginDate=2013-10-09 13:00:01&endDate=2013-10-19 00:00:01&errType=3&opID=1
 
-# 树形结构查询 infoID=0001 非必须，不传时返回根节点.
-http://localhost:8085/EnergyAnalysisSystem/api/tree/area/query?callback=123123&infoID=0001
+# 树形结构查询 infoID=0001 非必须，不传时返回根节点.opID不传时查询二级以上菜单
+http://localhost:8085/EnergyAnalysisSystem/api/tree/area/query?callback=123123&infoID=0001&opID=1
 
 
 
