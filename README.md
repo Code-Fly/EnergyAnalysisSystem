@@ -32,3 +32,6 @@ http://localhost:8085/EnergyAnalysisSystem/api/tree/area/query?callback=123123&i
 
 # 日志数据
 http://localhost:8080/EnergyAnalysisSystem/api/log/query?callback=123123&beginDate=2014-04-09 13:00:01&endDate=2014-10-11 00:00:01
+
+#登陆校验接口
+http://localhost:8085/EnergyAnalysisSystem/api/login/query?opNm=admin&opPwd=admin
