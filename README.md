@@ -28,7 +28,7 @@ http://localhost:8080/EnergyAnalysisSystem/api/readerr/query?callback=123123&beg
 # 树形结构查询(查询一级和二级) infoID=0001 非必须，不传时返回根节点.
 http://localhost:8085/EnergyAnalysisSystem/api/tree/area/query?callback=123123&infoID=0001
 
-# 树形结构查询(三级) infoID=0001 非必须，不传时返回根节点.
+# 树形结构查询(三级)
 http://localhost:8085/EnergyAnalysisSystem/api/tree/meter/query?callback=123123&infoID=000105&opID=1
 
 # 日志数据
