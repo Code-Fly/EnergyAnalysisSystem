@@ -2,6 +2,10 @@ $(function() {
 	if (window.location.protocol + "//" + window.location.host + window.location.pathname != _ctx + "/web/login") {
 		sessionAuthentication();
 	}
+	
+	if("1"!=SessionCache.get("opID") && 1!=SessionCache.get("opID")){
+		$("#authorization").hide();
+	}
 
 	$("#logout").click(function(e) {
 		SessionCache.remove("opID");
