@@ -74,7 +74,19 @@ $(document).ready(function() {
 					// get the data bound to the current table row
 					var data = this.dataItem(tr);
 					// alert("Details for: " + data.mID);
-					reloadGrid();
+
+					$.ajax({
+						url : _ctx + "/api/lience/add?opID=" + $("#user-1").data("kendoComboBox").value() + "&mID=" + data.mID,
+						cache : false,
+						type : "PUT",
+						success : function(data, textStatus, jqXHR) {
+							reloadGrid();
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown) {
+							alert("操作异常");
+						}
+					});
+
 				}
 			}, {
 				name : "remove",
@@ -86,8 +98,17 @@ $(document).ready(function() {
 					// get the current table row (tr)
 					// get the data bound to the current table row
 					var data = this.dataItem(tr);
-					// alert("Details for: " + data.mID);
-					reloadGrid();
+					$.ajax({
+						url : _ctx + "/api/lience/delete?opID=" + $("#user-1").data("kendoComboBox").value() + "&mID=" + data.mID,
+						cache : false,
+						type : "DELETE",
+						success : function(data, textStatus, jqXHR) {
+							reloadGrid();
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown) {
+							alert("操作异常");
+						}
+					});
 				}
 			} ],
 			title : "&nbsp;",
