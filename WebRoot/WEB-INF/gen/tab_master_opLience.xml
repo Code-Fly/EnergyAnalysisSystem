@@ -31,7 +31,7 @@
 		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
 		<table tableName="tab_master_opLience" domainObjectName="TabMasterOpLience" >
 			 <property name="useActualColumnNames" value="true"/>
-			 <generatedKey column="funID" sqlStatement="JDBC" identity="true"/> 
+			 <generatedKey column="funID" sqlStatement="SqlServer" identity="true"/> 
 		</table>
 
 	</context>

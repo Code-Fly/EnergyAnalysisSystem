@@ -44,11 +44,8 @@ public class TabMasterOpLienceController extends BaseController {
 				@RequestParam(value = "mID", required = true) Integer mID) {
 			TabMasterOpLienceExample tabTabMasterOpLienceExample = new TabMasterOpLienceExample();
 			tabTabMasterOpLienceExample.or().andOpIDEqualTo(opID).andMIDEqualTo(mID);
-			int num = tabTabMasterOpLienceService.deleteByExample(tabTabMasterOpLienceExample);
-			if(num > 0)
-				return SUCESS;
-			else 
-				return FAIL;
+			tabTabMasterOpLienceService.deleteByExample(tabTabMasterOpLienceExample);
+			return SUCESS;
 		}
 		
 		/**
@@ -70,11 +67,8 @@ public class TabMasterOpLienceController extends BaseController {
 				tabTabMasterOpLience.setmID(mID);
 				tabTabMasterOpLience.setNm(tabMeter.getNm());
 				tabTabMasterOpLience.setOpID(opID);
-				int num = tabTabMasterOpLienceService.insertSelective(tabTabMasterOpLience);
-				if(num > 0)
-					return SUCESS;
-				else 
-					return FAIL;
+				tabTabMasterOpLienceService.insertSelective(tabTabMasterOpLience);
+				return SUCESS;
 			}
 		}
 }
