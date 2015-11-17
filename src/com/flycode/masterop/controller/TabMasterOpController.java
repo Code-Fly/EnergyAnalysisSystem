@@ -35,7 +35,7 @@ public class TabMasterOpController extends BaseController {
 		 */
 		@ResponseBody
 		@RequestMapping(value = "/login/query")
-		public String queryOp(@RequestParam(value = "opNm", required = true) String opNm,
+		public String queryOp1(@RequestParam(value = "opNm", required = true) String opNm,
 				@RequestParam(value = "opPwd", required = true) String opPwd) {
 			TabMasterOpExample tabMasterOpExample = new TabMasterOpExample();
 			tabMasterOpExample.or().andOpNmEqualTo(opNm);
