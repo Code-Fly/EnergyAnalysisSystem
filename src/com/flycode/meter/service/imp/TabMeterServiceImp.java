@@ -24,6 +24,6 @@ public class TabMeterServiceImp implements TabMeterService {
 
 	@Override
 	public List<TabMeter> selectByExample(TabMeterExample example) {
-		return tabMeterMapper.selectByExample(null);
+		return tabMeterMapper.selectByExample(example);
 	}
 }

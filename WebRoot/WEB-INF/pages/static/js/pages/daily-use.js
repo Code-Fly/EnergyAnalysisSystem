@@ -240,7 +240,7 @@ $(document).ready(function() {
 			locked : true,
 			field : "nm",
 			title : "表具名称",
-			width : 200
+			width : 250
 		}, {
 			field : "collectDay",
 			title : "日期",
@@ -266,7 +266,7 @@ $(document).ready(function() {
 				text : "超下限",
 				value : 1
 			} ],
-			width : 150
+			width : 200
 		} ],
 
 	});
