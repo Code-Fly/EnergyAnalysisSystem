@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var opID = SessionCache.get("opID");
-	
+
 	$("#export-img").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportImage().done(function(data) {
@@ -44,16 +44,8 @@ $(document).ready(function() {
 		user3.value(null);
 	});
 
-	$("#tab-chart").on('shown.bs.tab', function(e) {
-		reloadChart();
-	})
-
-	$("#tab-data").on('shown.bs.tab', function(e) {
-		reloadGrid();
-	})
-
 	$("#submit-dp").click(function() {
-			reloadGrid();
+		reloadGrid();
 	});
 
 	var today = new Date();
@@ -63,15 +55,16 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	//start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
-	
+	// start.value(new
+	// Date(today.getFullYear(),today.getMonth(),today.getDate(),"00","00","00"));
+
 	var end = $("#end").kendoDateTimePicker({
 		change : endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	//end.value(today);
-	
+	// end.value(today);
+
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",
@@ -129,7 +122,7 @@ $(document).ready(function() {
 	});
 
 	$("#chart").kendoChart({
-		autoBind: false,
+		autoBind : false,
 		dataSource : {
 			transport : {
 				read : {
@@ -195,7 +188,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
-		autoBind: false,
+		autoBind : false,
 		dataSource : {
 			transport : {
 				read : {
@@ -213,17 +206,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-//		change : function(e) {
-//			var selectedRows = this.select();
-//			var selectedDataItems = [];
-//			for (var i = 0; i < selectedRows.length; i++) {
-//				var dataItem = this.dataItem(selectedRows[i]);
-//				selectedDataItems.push(dataItem);
-//			}
-//			// selectedDataItems contains all selected data items
-//			// alert(JSON.stringify(selectedDataItems));
-//			this.dataSource.read();
-//		},
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
@@ -236,17 +229,15 @@ $(document).ready(function() {
 			field : "info",
 			title : "电压信息",
 			width : 500
-		},
-		{
+		}, {
 			field : "readTime",
 			title : "通讯时间",
 			width : 300
-		},
-		{
+		}, {
 			field : "nm",
 			title : "用户名称",
 			width : 200
-		}],
+		} ],
 
 	});
 
@@ -296,28 +287,7 @@ $(document).ready(function() {
 		start.min(startDateMin);
 	}
 
-	function reloadChart() {
-		if (!validate()) {
-			alert("请输入查询参数");
-			return;
-		}
-		var chart = $("#chart").data("kendoChart");
-		chart.setOptions({
-			dataSource : {
-				transport : {
-					read : {
-						url : _ctx + "/api/meterlog/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-						dataType : "jsonp"
-					}
-				}
-			},
-			title : {
-				text : $("#start").val() + " ~ " + $("#end").val()
-			},
-		});
-		chart.dataSource.read();
-	}
-
+	
 	function reloadGrid() {
 		if (!validate()) {
 			alert("请输入查询参数");
