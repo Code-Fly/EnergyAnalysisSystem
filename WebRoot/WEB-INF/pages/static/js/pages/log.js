@@ -41,15 +41,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind: false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/log/query?beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

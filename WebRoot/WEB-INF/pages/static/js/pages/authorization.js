@@ -110,6 +110,7 @@ $(document).ready(function() {
 				} else {
 					$('tr[data-uid="' + row.uid + '"] ').find(".btn-add").hide();
 				}
+				$('tr[data-uid="' + row.uid + '"] ').find(".k-button").removeClass("k-button k-button-icontext").addClass("btn btn-default");
 			});
 		},
 		columns : [ {
@@ -121,21 +122,8 @@ $(document).ready(function() {
 		}, {
 			command : [ {
 				name : "add",
-				text : "添加",
-				className : "btn-add",
-				click : function(e) {
-					// e.target is the DOM element representing the button
-					var tr = $(e.target).closest("tr");
-					// get the current table row (tr)
-					// get the data bound to the current table row
-					var data = this.dataItem(tr);
-					// alert("Details for: " + data.mID);
-					reloadGrid()
-				}
-			}, {
-				name : "remove",
-				text : "删除",
-				className : "btn-remove",
+				text : "&nbsp;添加",
+				className : "btn-add fa fa-plus",
 				click : function(e) {
 					// e.target is the DOM element representing the button
 					var tr = $(e.target).closest("tr");
@@ -146,8 +134,18 @@ $(document).ready(function() {
 					reloadGrid();
 				}
 			}, {
-				text : " View Details",
-				className : "fa fa-map-marker"
+				name : "remove",
+				text : "&nbsp;删除",
+				className : "btn-remove fa fa-remove",
+				click : function(e) {
+					// e.target is the DOM element representing the button
+					var tr = $(e.target).closest("tr");
+					// get the current table row (tr)
+					// get the data bound to the current table row
+					var data = this.dataItem(tr);
+					// alert("Details for: " + data.mID);
+					reloadGrid();
+				}
 			} ],
 			title : "&nbsp;",
 			width : "100px"

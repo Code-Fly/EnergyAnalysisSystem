@@ -40,15 +40,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind: false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/readerr/query?opID=" + opID + "&" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=4",
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

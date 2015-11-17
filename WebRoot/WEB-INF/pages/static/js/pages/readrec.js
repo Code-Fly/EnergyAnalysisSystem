@@ -133,14 +133,6 @@ $(document).ready(function() {
 
 	$("#chart").kendoChart({
 		autoBind : false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			}
-		},
 		series : [ {
 			field : "tFlow",
 			name : "瞬时流量 [kwh]",
@@ -216,15 +208,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind : false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/readrec/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

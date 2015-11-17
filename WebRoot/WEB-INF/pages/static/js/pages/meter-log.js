@@ -1,26 +1,6 @@
 $(document).ready(function() {
 	var opID = SessionCache.get("opID");
 
-	$("#export-img").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportImage().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.png",
-			});
-		});
-	});
-
-	$("#export-svg").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportSVG().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.svg",
-			});
-		});
-	});
-
 	$("#export-excel").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
@@ -121,67 +101,6 @@ $(document).ready(function() {
 		dataSource : null
 	});
 
-	$("#chart").kendoChart({
-		autoBind : false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/meterlog/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			}
-		},
-		series : [ {
-			field : "dayNumber",
-			name : "日用量 [kwh]",
-			style : "smooth",
-			type : "line",
-			categoryField : "startTime",
-			markers : {
-				visible : false
-			},
-			color : "#007eff",
-			axis : "dayNumber"
-		} ],
-		valueAxes : [ {
-			name : "dayNumber",
-			color : "#007eff"
-		} ],
-		legend : {
-			position : "bottom"
-		},
-		title : {
-			text : $("#start").val() + " ~ " + $("#end").val()
-		},
-		categoryAxis : {
-			majorGridLines : {
-				visible : false
-			},
-			majorTicks : {
-				visible : false
-			},
-			type : "date",
-			baseUnit : "days",
-			labels : {
-				rotation : "auto",
-				dateFormats : {
-					days : "MM-dd"
-				}
-			}
-		// axisCrossingValues : [ 999999 ],
-		},
-		tooltip : {
-			visible : true,
-			template : "<div>#= series.name #: #= value #</div><div> #= dataItem.startTime#</div>"
-		},
-		chartArea : {
-			background : "transparent"
-		},
-		dataBound : function(e) {
-			// alert($("#user-3").data("kendoComboBox").value())
-		}
-	});
-
 	$("#grid").kendoGrid({
 		excel : {
 			fileName : "Export.xlsx",
@@ -189,15 +108,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind : false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/meterlog/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

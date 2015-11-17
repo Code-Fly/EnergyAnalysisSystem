@@ -94,15 +94,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind: false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/yearaccount/query?opID=" + opID + "&infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

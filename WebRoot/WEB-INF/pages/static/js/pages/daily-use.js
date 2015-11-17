@@ -134,14 +134,7 @@ $(document).ready(function() {
 	});
 
 	$("#chart").kendoChart({
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/dayaccount/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			}
-		},
+		autoBind : false,
 		series : [ {
 			field : "dayNumber",
 			name : "日用量 [kwh]",
@@ -200,15 +193,6 @@ $(document).ready(function() {
 			allPages : true
 		},
 		autoBind : false,
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/dayaccount/query?mID=" + $("#user-3").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
-		},
 		sortable : true,
 		filterable : true,
 		pageable : {

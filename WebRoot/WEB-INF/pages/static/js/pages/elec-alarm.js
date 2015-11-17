@@ -1,26 +1,6 @@
 $(document).ready(function() {
 	var opID = SessionCache.get("opID");
 
-	$("#export-img").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportImage().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.png",
-			});
-		});
-	});
-
-	$("#export-svg").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportSVG().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.svg",
-			});
-		});
-	});
-
 	$("#export-excel").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
@@ -83,20 +63,12 @@ $(document).ready(function() {
 		} ],
 		index : 0
 	});
+	
 	$("#grid").kendoGrid({
 		excel : {
 			fileName : "Export.xlsx",
 			filterable : true,
 			allPages : true
-		},
-		dataSource : {
-			transport : {
-				read : {
-					url : _ctx + "/api/error/query?opID=" + opID + "&errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-					dataType : "jsonp"
-				}
-			},
-			pageSize : 10,
 		},
 		sortable : true,
 		filterable : true,
