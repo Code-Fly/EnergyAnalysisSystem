@@ -90,11 +90,15 @@ public class WebController extends BaseController {
 	public String dataError(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/data-error";
 	}
-	
-	
+		
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "/login";
+	}
+	
+	@RequestMapping(value = "/authorization")
+	public String authorization(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return "/authorization";
 	}
 
 	@RequestMapping(value = {"/index" })

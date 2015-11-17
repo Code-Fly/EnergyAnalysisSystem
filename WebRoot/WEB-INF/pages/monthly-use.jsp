@@ -32,8 +32,8 @@
 								查询时间：<input id="start" />
 							</div>
 							<div class="col-md-4 text-center">
-								<button id="submit-dp" class='k-button'>提交</button>
-								<button id="reset-dp" class='k-button'>重置</button>
+								<button id="submit-dp" class='btn btn-default'>提交</button>
+								<button id="reset-dp" class='btn btn-default'>重置</button>
 							</div>
 						</div>
 						<div class="panel panel-default">

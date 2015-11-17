@@ -5,6 +5,7 @@ $(function() {
 
 	$("#logout").click(function(e) {
 		SessionCache.remove("opID");
+		SessionCache.remove("userName");
 		window.location.href = _ctx + "/web/login";
 	});
 });
@@ -21,7 +22,10 @@ function sessionAuthentication() {
 	var opID = SessionCache.get("opID");
 	if (null == opID || "" == opID) {
 		SessionCache.remove("opID");
+		SessionCache.remove("userName");
 		window.location.href = _ctx + "/web/login";
+	}else{
+		$("#nav-userName").text(SessionCache.get("userName"));
 	}
 }
 

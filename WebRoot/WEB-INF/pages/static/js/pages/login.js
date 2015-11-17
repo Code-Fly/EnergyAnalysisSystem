@@ -8,15 +8,19 @@ $(document).ready(function() {
 				
 				if ("" != data && null != data) {
 					SessionCache.update("opID", data);
+					SessionCache.update("userName", $("#userName").val());					
 					window.location.href = _ctx + "/web/index";
 				} else {
 					SessionCache.remove("opID");
+					SessionCache.remove("userName");
 					alert("认证失败");
+					$("#login").removeClass("disabled");
 				}
-				$("#login").removeClass("disabled");
+				
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				SessionCache.remove("opID");
+				SessionCache.remove("userName");
 				alert("认证异常");
 				$("#login").removeClass("disabled");
 			}
