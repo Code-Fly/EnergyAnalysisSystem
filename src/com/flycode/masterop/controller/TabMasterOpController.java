@@ -50,5 +50,29 @@ public class TabMasterOpController extends BaseController {
 				}
 			}
 		}
-
+		
+		/**
+		 * 登陆用户名和密码校验，错误返回error，正确返回对应的opID
+		 * @param beginDate
+		 * @param endDate
+		 * @return
+		 */
+		@ResponseBody
+		@RequestMapping(value = "/op/query")
+		public String queryOp(@RequestParam(value = "opNm", required = true) String opNm,
+				@RequestParam(value = "opPwd", required = true) String opPwd) {
+			TabMasterOpExample tabMasterOpExample = new TabMasterOpExample();
+			tabMasterOpExample.or().andOpNmEqualTo(opNm);
+			List<TabMasterOp> tabMasterOps = tabMasterOpService.selectByExample(tabMasterOpExample);
+			if (null == tabMasterOps || 0 == tabMasterOps.size()) {
+				return "";
+			} else {
+				if (opPwd.equals(tabMasterOps.get(0).getOpPwd())) {
+					return tabMasterOps.get(0).getOpID().toString();
+				} else {
+					return "";
+				}
+			}
+		}
+		
 }
