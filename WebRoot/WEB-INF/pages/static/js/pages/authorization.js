@@ -1,26 +1,6 @@
 $(document).ready(function() {
 	var opID = SessionCache.get("opID");
 
-	$("#export-img").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportImage().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.png",
-			});
-		});
-	});
-
-	$("#export-svg").click(function() {
-		var chart = $("#chart").getKendoChart();
-		chart.exportSVG().done(function(data) {
-			kendo.saveAs({
-				dataURI : data,
-				fileName : "chart.svg",
-			});
-		});
-	});
-
 	$("#export-excel").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
@@ -28,63 +8,26 @@ $(document).ready(function() {
 
 	$("#reset-dp").click(function() {
 		var user1 = $("#user-1").data("kendoComboBox");
-		var user2 = $("#user-2").data("kendoComboBox");
-		var user3 = $("#user-3").data("kendoComboBox");
-		start.value(null);
 		user1.text(null);
 		user1.value(null);
-		user2.text(null);
-		user2.value(null);
-		user3.text(null);
-		user3.value(null);
 	});
 
 	$("#submit-dp").click(function() {
 		reloadGrid();
 	});
 
-	var today = new Date();
-
-	var start = $("#start").kendoDatePicker({
-		depth : "decade",
-		start : "decade",
-		format : "yyyy",
-		culture : "zh-CN"
-	}).data("kendoDatePicker");
-	// start.value(new Date());
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
-		dataTextField : "nm",
-		dataValueField : "infoID",
+		dataTextField : "opNm",
+		dataValueField : "opID",
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/tree/area/query",
+					url : _ctx + "/api/op/query",
 					dataType : "jsonp"
 				}
 			}
-		},
-		change : function(e) {
-			var user1 = $("#user-1").data("kendoComboBox");
-			var user2 = $("#user-2").data("kendoComboBox");
-			user2.setDataSource({
-				transport : {
-					read : {
-						url : _ctx + "/api/tree/area/query?infoID=" + user1.value(),
-						dataType : "jsonp"
-					}
-				}
-			});
-			user2.text(null);
-			user2.value(null);
 		}
-	});
-
-	$("#user-2").kendoComboBox({
-		placeholder : "请选择",
-		dataTextField : "nm",
-		dataValueField : "infoID",
-		dataSource : null
 	});
 
 	$("#grid").kendoGrid({
@@ -163,7 +106,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/lience/query?opID=1",
+						url : _ctx + "/api/lience/query?opID=" + $("#user-1").data("kendoComboBox").value(),
 						dataType : "jsonp"
 					},
 					update : {
@@ -193,7 +136,7 @@ $(document).ready(function() {
 	}
 
 	function validate() {
-		if ($("#user-2").data("kendoComboBox").value() == "" || $("#start").val() == "") {
+		if ($("#user-1").data("kendoComboBox").value() == "") {
 			return false;
 		}
 		return true;

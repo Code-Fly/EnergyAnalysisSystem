@@ -17,16 +17,10 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">表具授权</h1>
 						<div class="row show-grid">
-							<div class="col-md-3">
+							<div class="col-md-8">
 								<input id="user-1" style="width: 100%;" />
 							</div>
-							<div class="col-md-3">
-								<input id="user-2" style="width: 100%;" />
-							</div>
-							<div class="col-md-3">
-								<input id="start" style="width: 100%;" />
-							</div>
-							<div class="col-md-3 text-center">
+							<div class="col-md-4 text-center">
 								<button id="submit-dp" class='btn btn-default'>提交</button>
 								<button id="reset-dp" class='btn btn-default'>重置</button>
 							</div>
