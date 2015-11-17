@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var opID = SessionCache.get("opID");
+	
 	$("#export-img").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportImage().done(function(data) {
@@ -66,13 +68,13 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	
+
 	var end = $("#end").kendoDateTimePicker({
 		change : endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	
+
 	$("#user-1").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "nm",
@@ -80,7 +82,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/tree/query",
+					url : _ctx + "/api/tree/area/query",
 					dataType : "jsonp"
 				}
 			}
@@ -91,7 +93,7 @@ $(document).ready(function() {
 			user2.setDataSource({
 				transport : {
 					read : {
-						url : _ctx + "/api/tree/query?infoID=" + user1.value(),
+						url : _ctx + "/api/tree/area/query?infoID=" + user1.value(),
 						dataType : "jsonp"
 					}
 				}
@@ -112,7 +114,7 @@ $(document).ready(function() {
 			user3.setDataSource({
 				transport : {
 					read : {
-						url : _ctx + "/api/tree/query?infoID=" + user2.value(),
+						url : _ctx + "/api/tree/area/query?opID=" + opID + "&infoID=" + user2.value(),
 						dataType : "jsonp"
 					}
 				}
@@ -130,7 +132,7 @@ $(document).ready(function() {
 	});
 
 	$("#chart").kendoChart({
-		autoBind: false,
+		autoBind : false,
 		dataSource : {
 			transport : {
 				read : {
@@ -213,7 +215,7 @@ $(document).ready(function() {
 			filterable : true,
 			allPages : true
 		},
-		autoBind: false,
+		autoBind : false,
 		dataSource : {
 			transport : {
 				read : {
@@ -231,17 +233,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-//		change : function(e) {
-//			var selectedRows = this.select();
-//			var selectedDataItems = [];
-//			for (var i = 0; i < selectedRows.length; i++) {
-//				var dataItem = this.dataItem(selectedRows[i]);
-//				selectedDataItems.push(dataItem);
-//			}
-//			// selectedDataItems contains all selected data items
-//			// alert(JSON.stringify(selectedDataItems));
-//			this.dataSource.read();
-//		},
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {

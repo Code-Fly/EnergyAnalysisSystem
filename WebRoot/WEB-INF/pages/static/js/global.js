@@ -20,6 +20,7 @@ function GetQueryString(name) {
 function sessionAuthentication() {
 	var opID = SessionCache.get("opID");
 	if (null == opID || "" == opID) {
+		SessionCache.remove("opID");
 		window.location.href = _ctx + "/web/login";
 	}
 }

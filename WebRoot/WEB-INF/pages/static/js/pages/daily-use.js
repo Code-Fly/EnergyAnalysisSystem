@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var opID = SessionCache.get("opID");
+	
 	$("#export-img").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportImage().done(function(data) {
@@ -82,7 +84,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/tree/query",
+					url : _ctx + "/api/tree/area/query",
 					dataType : "jsonp"
 				}
 			}
@@ -93,7 +95,7 @@ $(document).ready(function() {
 			user2.setDataSource({
 				transport : {
 					read : {
-						url : _ctx + "/api/tree/query?infoID=" + user1.value(),
+						url : _ctx + "/api/tree/area/query?infoID=" + user1.value(),
 						dataType : "jsonp"
 					}
 				}
@@ -114,7 +116,7 @@ $(document).ready(function() {
 			user3.setDataSource({
 				transport : {
 					read : {
-						url : _ctx + "/api/tree/query?infoID=" + user2.value(),
+						url : _ctx + "/api/tree/area/query?opID=" + opID + "&infoID=" + user2.value(),
 						dataType : "jsonp"
 					}
 				}
