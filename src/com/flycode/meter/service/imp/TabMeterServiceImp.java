@@ -26,4 +26,14 @@ public class TabMeterServiceImp implements TabMeterService {
 	public List<TabMeter> selectByExample(TabMeterExample example) {
 		return tabMeterMapper.selectByExample(example);
 	}
+
+	@Override
+	public TabMeter selectByPrimaryKey(Integer mID) {
+		return tabMeterMapper.selectByPrimaryKey(mID);
+	}
+
+	@Override
+	public List<TabMeter> selectByOpID(Integer opID) {
+		return tabMeterMapper.selectByOpID(opID);
+	}
 }

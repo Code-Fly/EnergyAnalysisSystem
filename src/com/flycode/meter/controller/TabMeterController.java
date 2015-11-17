@@ -37,5 +37,13 @@ public class TabMeterController extends BaseController {
 		String meters = JsonUtil.jsonArray2Sting(callBack,tabMeterService.selectByExample(example));
 		return meters;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/lience/query", produces = "application/x-javascript;charset=UTF-8")
+	public String queryOpMeters(@RequestParam(value = "callback", required = true) String callBack,
+			@RequestParam(value = "opID", required = true) Integer opID) {
+		String meters = JsonUtil.jsonArray2Sting(callBack,tabMeterService.selectByOpID(opID));
+		return meters;
+	}
 
 }

@@ -28,6 +28,10 @@ public abstract class BaseController {
 	
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
+	protected String SUCESS = "sucess";
+	
+	protected String FAIL = "fail";
+	
 	/**
 	 * 运行时异常的处理方法
 	 * @param ex

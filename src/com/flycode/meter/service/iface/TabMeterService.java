@@ -7,5 +7,6 @@ import com.flycode.meter.entity.TabMeterExample;
 
 public interface TabMeterService {
 	List<TabMeter> selectByExample(TabMeterExample example);
-
+	TabMeter selectByPrimaryKey(Integer mID);
+	List<TabMeter> selectByOpID(Integer opID);
 }

@@ -41,4 +41,14 @@ public class TabMasterOpLienceServiceImp implements TabMasterOpLienceService {
 			return mIDs;
 		}
 	}
+
+	@Override
+	public int deleteByExample(TabMasterOpLienceExample example) {
+		return tabMasterOpLienceMapper.deleteByExample(example);
+	}
+
+	@Override
+	public int insertSelective(TabMasterOpLience record) {
+		return  tabMasterOpLienceMapper.insertSelective(record);
+	}
 }
