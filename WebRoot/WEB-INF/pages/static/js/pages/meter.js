@@ -19,7 +19,7 @@ $(document).ready(function() {
 					dataType : "jsonp"
 				}
 			},
-			pageSize : 10,
+			pageSize : 20,
 		},
 		sortable : true,
 		filterable : true,
