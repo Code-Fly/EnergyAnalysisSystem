@@ -5,7 +5,7 @@
 <head>
 <title>能源监测系统</title>
 <%@ include file="meta/meta.jsp"%>
-<script type="text/javascript" src="${ctx}/static/js/pages/readrec.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/pages/authorization.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -15,26 +15,18 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">趋势分析</h1>
+						<h1 class="page-header">表具授权</h1>
 						<div class="row show-grid">
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<input id="user-1" style="width: 100%;" />
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<input id="user-2" style="width: 100%;" />
 							</div>
-							<div class="col-md-4">
-								<input id="user-3" style="width: 100%;" />
+							<div class="col-md-3">
+								<input id="start" style="width: 100%;" />
 							</div>
-						</div>
-						<div class="row show-grid">
-							<div class="col-md-5 text-center">
-								开始时间：<input id="start" />
-							</div>
-							<div class="col-md-5 text-center">
-								结束时间：<input id="end" />
-							</div>
-							<div class="col-md-2 text-center">
+							<div class="col-md-3 text-center">
 								<button id="submit-dp" class='btn btn-default'>提交</button>
 								<button id="reset-dp" class='btn btn-default'>重置</button>
 							</div>
@@ -48,9 +40,6 @@
 											导出 <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#" id="export-img">导出PNG图</a></li>
-											<li><a href="#" id="export-svg">导出SVG图</a></li>
-											<li class="divider"></li>
 											<li><a href="#" id="export-excel">导出Excel</a></li>
 										</ul>
 									</div>
@@ -58,22 +47,7 @@
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs">
-									<li class="active"><a id="tab-chart" href="#tab-content-chart" data-toggle="tab">折线图</a></li>
-									<li><a id="tab-data" href="#tab-content-data" data-toggle="tab">数据表</a></li>
-								</ul>
-
-								<!-- Tab panes -->
-								<div class="tab-content">
-									<div class="tab-pane fade in active" id="tab-content-chart">
-										<div id="chart" style="position: relative; background: url(${ctx}/static/images/world-map.png) 50% 50% no-repeat;"></div>
-									</div>
-									<div class="tab-pane fade" id="tab-content-data">
-										<div id="grid" style="margin-top: 1em;"></div>
-									</div>
-
-								</div>
+								<div id="grid" style="margin-top: 1em;"></div>
 							</div>
 							<!-- /.panel-body -->
 						</div>
