@@ -28,10 +28,20 @@ http://localhost:8080/EnergyAnalysisSystem/api/readerr/query?callback=123123&beg
 # 树形结构查询 infoID=0001 非必须，不传时返回根节点.opID不传时查询二级以上菜单
 http://localhost:8085/EnergyAnalysisSystem/api/tree/area/query?callback=123123&infoID=0001&opID=1
 
-
-
 # 日志数据
 http://localhost:8080/EnergyAnalysisSystem/api/log/query?callback=123123&beginDate=2014-04-09 13:00:01&endDate=2014-10-11 00:00:01
 
 #登陆校验接口
 http://localhost:8085/EnergyAnalysisSystem/api/login/query?opNm=admin&opPwd=admin
+
+#查询所有用户
+http://localhost:8085/EnergyAnalysisSystem/api/op/query?callback=123123
+
+#查询表具权限
+http://localhost:8080/EnergyAnalysisSystem/api/lience/query?callback=123123&opID=1
+
+#删除表具权限（Method = delete）
+http://localhost:8080/EnergyAnalysisSystem/api/lience/delete?opID=1&mID=37
+
+#增加表具权限（Method = put）
+http://localhost:8080/EnergyAnalysisSystem/api/lience/add?opID=1&mID=37

@@ -15,6 +15,7 @@ import com.flycode.common.BaseController;
 import com.flycode.masterop.entity.TabMasterOp;
 import com.flycode.masterop.entity.TabMasterOpExample;
 import com.flycode.masterop.service.iface.TabMasterOpService;
+import com.flycode.util.JsonUtil;
 
 /**
  * @author VM
@@ -35,7 +36,7 @@ public class TabMasterOpController extends BaseController {
 		 */
 		@ResponseBody
 		@RequestMapping(value = "/login/query")
-		public String queryOp1(@RequestParam(value = "opNm", required = true) String opNm,
+		public String loginOp(@RequestParam(value = "opNm", required = true) String opNm,
 				@RequestParam(value = "opPwd", required = true) String opPwd) {
 			TabMasterOpExample tabMasterOpExample = new TabMasterOpExample();
 			tabMasterOpExample.or().andOpNmEqualTo(opNm);
@@ -52,27 +53,13 @@ public class TabMasterOpController extends BaseController {
 		}
 		
 		/**
-		 * 登陆用户名和密码校验，错误返回error，正确返回对应的opID
-		 * @param beginDate
-		 * @param endDate
+		 * 查询所有用户
+		 * @param callBack
 		 * @return
 		 */
 		@ResponseBody
-		@RequestMapping(value = "/op/query")
-		public String queryOp(@RequestParam(value = "opNm", required = true) String opNm,
-				@RequestParam(value = "opPwd", required = true) String opPwd) {
-			TabMasterOpExample tabMasterOpExample = new TabMasterOpExample();
-			tabMasterOpExample.or().andOpNmEqualTo(opNm);
-			List<TabMasterOp> tabMasterOps = tabMasterOpService.selectByExample(tabMasterOpExample);
-			if (null == tabMasterOps || 0 == tabMasterOps.size()) {
-				return "";
-			} else {
-				if (opPwd.equals(tabMasterOps.get(0).getOpPwd())) {
-					return tabMasterOps.get(0).getOpID().toString();
-				} else {
-					return "";
-				}
-			}
+		@RequestMapping(value = "/op/query", produces = "application/x-javascript;charset=UTF-8")
+		public String queryOp(@RequestParam(value = "callback", required = true) String callBack) {
+			return JsonUtil.jsonArray2Sting(callBack,tabMasterOpService.selectByExample(null));
 		}
-		
 }
