@@ -17,7 +17,7 @@
 				<li><a href="#"><i class="fa fa-user fa-fw"></i> 用户</a></li>
 				<li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a></li>
 				<li class="divider"></li>
-				<li><a href="login"><i class="fa fa-sign-out fa-fw"></i> 登出</a></li>
+				<li><a id="logout" href="#"><i class="fa fa-sign-out fa-fw"></i> 登出</a></li>
 			</ul> <!-- /.dropdown-user --></li>
 		<!-- /.dropdown -->
 	</ul>

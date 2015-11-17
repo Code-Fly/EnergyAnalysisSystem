@@ -19,6 +19,7 @@
 <script type="text/javascript" src="${ctx}/static/js/messages/kendo.messages.zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/cultures/kendo.culture.zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/styles/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/global.js"></script>
 
 <!-- common css -->
 <link href="${ctx}/static/styles/theme/kendo.rtl.min.css" rel="stylesheet">
