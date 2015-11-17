@@ -15,7 +15,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">供电故障</h1>
+						<h1 class="page-header">停气报警</h1>
 						<div class="row show-grid">
 							<div class="col-md-5 text-center">
 								开始时间：<input id="start" />

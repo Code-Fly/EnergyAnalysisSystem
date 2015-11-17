@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var opID = SessionCache.get("opID");
+
 	$("#export-img").click(function() {
 		var chart = $("#chart").getKendoChart();
 		chart.exportImage().done(function(data) {
@@ -33,22 +35,11 @@ $(document).ready(function() {
 		start.min(new Date(1900, 0, 1));
 		start.value(null);
 		user1.value(200);
-		
+
 	});
 
-	$("#tab-chart").on('shown.bs.tab', function(e) {
-		reloadChart();
-	})
-
-	$("#tab-data").on('shown.bs.tab', function(e) {
-		reloadGrid();
-	})
-
 	$("#submit-dp").click(function() {
-		
-		
-			reloadGrid();
-	
+		reloadGrid();
 	});
 
 	var today = new Date();
@@ -58,27 +49,39 @@ $(document).ready(function() {
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
-	// start.value(new Date(today.getFullYear(),today.getMonth(),today.getDate()-1));
+	// start.value(new
+	// Date(today.getFullYear(),today.getMonth(),today.getDate()-1));
 	var end = $("#end").kendoDateTimePicker({
 		change : endChange,
 		format : "yyyy-MM-dd HH:mm:ss",
 		culture : "zh-CN"
 	}).data("kendoDateTimePicker");
 	// end.value(today);
-	
+
 	$("#errClass").kendoComboBox({
 		placeholder : "请选择",
 		dataTextField : "errText",
 		dataValueField : "errClass",
-		dataSource:[
-		 { errClass: 200, errText: "全部报警" },
-		 { errClass: 201, errText: "低电压" },
-		 { errClass: 202, errText: "超低电压" },
-		 { errClass: 210, errText: "掉电，电压正常" },
-		 { errClass: 211, errText: "掉电，低电压" },
-		 { errClass: 212, errText: "掉电，电压超低" }
-		],
-		index: 0	
+		dataSource : [ {
+			errClass : 200,
+			errText : "全部报警"
+		}, {
+			errClass : 201,
+			errText : "低电压"
+		}, {
+			errClass : 202,
+			errText : "超低电压"
+		}, {
+			errClass : 210,
+			errText : "掉电，电压正常"
+		}, {
+			errClass : 211,
+			errText : "掉电，低电压"
+		}, {
+			errClass : 212,
+			errText : "掉电，电压超低"
+		} ],
+		index : 0
 	});
 	$("#grid").kendoGrid({
 		excel : {
@@ -89,7 +92,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/error/query?errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+					url : _ctx + "/api/error/query?opID=" + opID + "&errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 					dataType : "jsonp"
 				}
 			},
@@ -103,17 +106,17 @@ $(document).ready(function() {
 			buttonCount : 5
 		},
 		selectable : "row",
-//		change : function(e) {
-//			var selectedRows = this.select();
-//			var selectedDataItems = [];
-//			for (var i = 0; i < selectedRows.length; i++) {
-//				var dataItem = this.dataItem(selectedRows[i]);
-//				selectedDataItems.push(dataItem);
-//			}
-//			// selectedDataItems contains all selected data items
-//			// alert(JSON.stringify(selectedDataItems));
-//			this.dataSource.read();
-//		},
+		// change : function(e) {
+		// var selectedRows = this.select();
+		// var selectedDataItems = [];
+		// for (var i = 0; i < selectedRows.length; i++) {
+		// var dataItem = this.dataItem(selectedRows[i]);
+		// selectedDataItems.push(dataItem);
+		// }
+		// // selectedDataItems contains all selected data items
+		// // alert(JSON.stringify(selectedDataItems));
+		// this.dataSource.read();
+		// },
 		dataBound : function(e) {
 			var data = this.dataSource.data();
 			$.each(data, function(i, row) {
@@ -126,24 +129,26 @@ $(document).ready(function() {
 			field : "nm",
 			title : "用户名称",
 			width : 150
-		},
-		{
+		}, {
 			field : "info",
 			title : "故障信息",
 			width : 500
-		},
-		{
+		}, {
 			field : "readTime",
 			title : "通讯时间",
 			width : 200
-		},{
+		}, {
 			field : "errProcessFlag",
 			title : "状态",
-			values: [
-			         { text: "未确认", value: 0 },
-			         { text: "已确认", value: 1 }],
+			values : [ {
+				text : "未确认",
+				value : 0
+			}, {
+				text : "已确认",
+				value : 1
+			} ],
 			width : 100
-		}],
+		} ],
 
 	});
 
@@ -193,27 +198,6 @@ $(document).ready(function() {
 		start.min(startDateMin);
 	}
 
-	function reloadChart() {
-		if (!validate()) {
-			alert("请输入查询参数");
-			return;
-		}
-		var chart = $("#chart").data("kendoChart");
-		chart.setOptions({
-			dataSource : {
-				transport : {
-					read : {
-						url : _ctx + "/api/error/query?errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
-						dataType : "jsonp"
-					}
-				}
-			},
-			title : {
-				text : $("#start").val() + " ~ " + $("#end").val()
-			},
-		});
-	}
-
 	function reloadGrid() {
 		if (!validate()) {
 			alert("请输入查询参数");
@@ -224,7 +208,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/error/query?errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
+						url : _ctx + "/api/error/query?opID=" + opID + "&errClass=" + $("#errClass").data("kendoComboBox").value() + "&beginDate=" + $("#start").val() + "&endDate=" + $("#end").val(),
 						dataType : "jsonp"
 					}
 				},

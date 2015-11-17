@@ -18,16 +18,17 @@
 						<h1 class="page-header">供电故障</h1>
 						<div class="row show-grid">
 							<div class="col-md-3">
-									开始时间：<input id="start" />
+								<input id="start" />
 							</div>
 							<div class="col-md-3">
-									结束时间：<input id="end" />
+								<input id="end" />
 							</div>
 							<div class="col-md-3">
-								<input id="errClass"/>
+								<input id="errClass" />
 							</div>
 							<div class="col-md-3 text-center">
 								<button id="submit-dp" class='k-button'>提交</button>
+								<button id="reset-dp" class='k-button'>重置</button>
 							</div>
 						</div>
 						<div class="panel panel-default">

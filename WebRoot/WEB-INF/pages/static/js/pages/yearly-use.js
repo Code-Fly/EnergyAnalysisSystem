@@ -70,7 +70,7 @@ $(document).ready(function() {
 			user2.setDataSource({
 				transport : {
 					read : {
-						url : _ctx + "/api/tree/area/query?opID=" + opID + "&infoID=" + user1.value(),
+						url : _ctx + "/api/tree/area/query?infoID=" + user1.value(),
 						dataType : "jsonp"
 					}
 				}
@@ -97,7 +97,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/yearaccount/query?infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
+					url : _ctx + "/api/yearaccount/query?opID=" + opID + "&infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
 					dataType : "jsonp"
 				}
 			},
@@ -197,7 +197,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/yearaccount/query?infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
+						url : _ctx + "/api/yearaccount/query?opID=" + opID + "&infoID=" + $("#user-2").data("kendoComboBox").value() + "&year=" + $("#start").val(),
 						dataType : "jsonp"
 					}
 				},

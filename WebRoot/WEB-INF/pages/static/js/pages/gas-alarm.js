@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var opID = SessionCache.get("opID");
+	
 	$("#export-excel").click(function(e) {
 		var grid = $("#grid").data("kendoGrid");
 		grid.saveAsExcel();
@@ -41,7 +43,7 @@ $(document).ready(function() {
 		dataSource : {
 			transport : {
 				read : {
-					url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+					url : _ctx + "/api/readerr/query?opID=" + opID + "&" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
 					dataType : "jsonp"
 				}
 			},
@@ -124,7 +126,7 @@ $(document).ready(function() {
 			dataSource : {
 				transport : {
 					read : {
-						url : _ctx + "/api/readerr/query?" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
+						url : _ctx + "/api/readerr/query?opID=" + opID + "&" + "beginDate=" + $("#start").val() + "&endDate=" + $("#end").val() + "&errType=3",
 						dataType : "jsonp"
 					}
 				},
