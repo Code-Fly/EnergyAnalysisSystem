@@ -5,6 +5,7 @@ $(function() {
 	
 	if("1"!=SessionCache.get("opID") && 1!=SessionCache.get("opID")){
 		$("#authorization").hide();
+		$("#nav-log").hide();
 	}
 
 	$("#logout").click(function(e) {
