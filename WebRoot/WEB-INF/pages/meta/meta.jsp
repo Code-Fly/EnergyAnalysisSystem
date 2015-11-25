@@ -20,6 +20,9 @@
 <script type="text/javascript" src="${ctx}/static/js/cultures/kendo.culture.zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/styles/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/global.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/react-with-addons.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/react-dom.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/browser.5.8.34.min.js"></script>
 
 <!-- common css -->
 <link href="${ctx}/static/styles/theme/kendo.rtl.min.css" rel="stylesheet">
