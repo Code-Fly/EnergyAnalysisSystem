@@ -6,12 +6,12 @@ var BootstrapButton = React.createClass({
             disable: null
         }
     },
-    disable: function() {
+    disable: function () {
         this.setState({
             disable: "disabled"
         });
     },
-    enable: function() {
+    enable: function () {
         this.setState({
             disable: null
         });
@@ -27,10 +27,25 @@ var BootstrapButton = React.createClass({
 });
 
 var BootstrapInput = React.createClass({
+    getInitialState: function () {
+        return {
+            disable: false
+        }
+    },
+    disable: function () {
+        this.setState({
+            disable: true
+        });
+    },
+    enable: function () {
+        this.setState({
+            disable: false
+        });
+    },
     render: function () {
         return (
             <input {...this.props}
-                className={(this.props.className || '') + ' form-control'}/>
+                className={(this.props.className || '') + ' form-control'} disabled={this.state.disable}/>
         );
     }
 });
@@ -41,8 +56,12 @@ var LoginForm = React.createClass({
         var password = this.state.password;
         //$(e.target).addClass("disabled");
         var loginBtn = this.refs.loginBtn;
+        var userName = this.refs.userNameInput;
+        var password = this.refs.passwordInput;
 
         loginBtn.disable();
+        userName.disable();
+        password.disable();
 
         $.ajax({
             url: _ctx + "/api/login/query?opNm=" + userName + "&opPwd=" + password,
@@ -58,6 +77,8 @@ var LoginForm = React.createClass({
                     alert("认证失败");
                     //$(e.target).removeClass("disabled");
                     loginBtn.enable();
+                    userName.enable();
+                    password.enable();
                 }
 
             },
@@ -67,6 +88,8 @@ var LoginForm = React.createClass({
                 alert("认证异常");
                 //$(e.target).removeClass("disabled");
                 loginBtn.enable();
+                userName.enable();
+                password.enable();
             }
         });
     },
@@ -103,17 +126,17 @@ var LoginForm = React.createClass({
                             <form role="form">
                                 <fieldset>
                                     <div className="form-group">
-                                        <BootstrapInput key="userName" placeholder="用户名" name="userName"
+                                        <BootstrapInput ref="userNameInput" key="userName" placeholder="用户名" name="userName"
                                                         type="text"
                                                         autofocus="true" onChange={this.handleUserName}
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <BootstrapInput key="password" placeholder="密码" name="password"
+                                        <BootstrapInput ref="passwordInput" key="password" placeholder="密码" name="password"
                                                         type="password" onChange={this.handlePassword}/>
                                     </div>
 
-                                    <BootstrapButton ref="loginBtn"
+                                    <BootstrapButton ref="loginBtn" key="loginBtn"
                                                      className={"btn-lg btn-success btn-block"}
                                                      onClick={this.handleLoginFormSubmit}>登陆</BootstrapButton>
                                 </fieldset>
