@@ -24,7 +24,11 @@ var LoginForm = React.createClass({
     handleLoginFormSubmit: function (e) {
         var userName = this.state.userName;
         var password = this.state.password;
-        $(e.target).addClass("disabled");
+        //$(e.target).addClass("disabled");
+        var cur = this;
+        cur.setState({
+            disableBtn: "disabled",
+        });
 
         $.ajax({
             url: _ctx + "/api/login/query?opNm=" + userName + "&opPwd=" + password,
@@ -38,7 +42,10 @@ var LoginForm = React.createClass({
                     SessionCache.remove("opID");
                     SessionCache.remove("userName");
                     alert("认证失败");
-                    $(e.target).removeClass("disabled");
+                    //$(e.target).removeClass("disabled");
+                    cur.setState({
+                        disableBtn: null,
+                    });
                 }
 
             },
@@ -46,7 +53,10 @@ var LoginForm = React.createClass({
                 SessionCache.remove("opID");
                 SessionCache.remove("userName");
                 alert("认证异常");
-                $(e.target).removeClass("disabled");
+                //$(e.target).removeClass("disabled");
+                cur.setState({
+                    disableBtn: null,
+                });
             }
         });
     },
@@ -54,7 +64,8 @@ var LoginForm = React.createClass({
         return {
             userName: null,
             password: null,
-        }
+            disableBtn: null
+    }
     },
     handleUserName: function (e) {
         var value = e.target.value;
@@ -87,12 +98,12 @@ var LoginForm = React.createClass({
                                                         autofocus="true" onChange={this.handleUserName}
                                         />
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group" ref="test">
                                         <BootstrapInput key="password" placeholder="密码" name="password"
                                                         type="password" onChange={this.handlePassword}/>
                                     </div>
-                                    <BootstrapButton key="login" ref="loginBtn"
-                                                     className="btn-lg btn-success btn-block" state
+                                    <BootstrapButton ref="loginBtn"
+                                                     className={"btn-lg btn-success btn-block " + (this.state.disableBtn)}
                                                      onClick={this.handleLoginFormSubmit}>登陆</BootstrapButton>
                                 </fieldset>
                             </form>
