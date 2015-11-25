@@ -1,12 +1,27 @@
 'use strict';
 
 var BootstrapButton = React.createClass({
+    getInitialState: function () {
+        return {
+            disable: null
+        }
+    },
+    disable: function() {
+        this.setState({
+            disable: "disabled"
+        });
+    },
+    enable: function() {
+        this.setState({
+            disable: null
+        });
+    },
     render: function () {
         return (
             <a {...this.props}
                 href="javascript:;"
                 role="button"
-                className={(this.props.className || '') + ' btn'}/>
+                className={(this.props.className || '') + ' btn ' + (this.state.disable)}/>
         );
     }
 });
@@ -25,10 +40,9 @@ var LoginForm = React.createClass({
         var userName = this.state.userName;
         var password = this.state.password;
         //$(e.target).addClass("disabled");
-        var cur = this;
-        cur.setState({
-            disableBtn: "disabled",
-        });
+        var loginBtn = this.refs.loginBtn;
+
+        loginBtn.disable();
 
         $.ajax({
             url: _ctx + "/api/login/query?opNm=" + userName + "&opPwd=" + password,
@@ -43,9 +57,7 @@ var LoginForm = React.createClass({
                     SessionCache.remove("userName");
                     alert("认证失败");
                     //$(e.target).removeClass("disabled");
-                    cur.setState({
-                        disableBtn: null,
-                    });
+                    loginBtn.enable();
                 }
 
             },
@@ -54,9 +66,7 @@ var LoginForm = React.createClass({
                 SessionCache.remove("userName");
                 alert("认证异常");
                 //$(e.target).removeClass("disabled");
-                cur.setState({
-                    disableBtn: null,
-                });
+                loginBtn.enable();
             }
         });
     },
@@ -65,18 +75,18 @@ var LoginForm = React.createClass({
             userName: null,
             password: null,
             disableBtn: null
-    }
+        }
     },
     handleUserName: function (e) {
         var value = e.target.value;
         this.setState({
-            userName: value,
+            userName: value
         });
     },
     handlePassword: function (e) {
         var value = e.target.value;
         this.setState({
-            password: value,
+            password: value
         });
     },
 
@@ -98,12 +108,13 @@ var LoginForm = React.createClass({
                                                         autofocus="true" onChange={this.handleUserName}
                                         />
                                     </div>
-                                    <div className="form-group" ref="test">
+                                    <div className="form-group">
                                         <BootstrapInput key="password" placeholder="密码" name="password"
                                                         type="password" onChange={this.handlePassword}/>
                                     </div>
+
                                     <BootstrapButton ref="loginBtn"
-                                                     className={"btn-lg btn-success btn-block " + (this.state.disableBtn)}
+                                                     className={"btn-lg btn-success btn-block"}
                                                      onClick={this.handleLoginFormSubmit}>登陆</BootstrapButton>
                                 </fieldset>
                             </form>
